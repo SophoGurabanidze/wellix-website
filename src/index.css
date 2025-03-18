@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.water-bg {
+  background: linear-gradient(45deg, #b5bfc9, #6ba5c7, #e5eef1);
+  background-size: 400% 400%;
+  animation: waterFlow 5s infinite linear;
+}
+
+@keyframes waterFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
