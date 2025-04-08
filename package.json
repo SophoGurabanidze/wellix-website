@@ -12,9 +12,14 @@
     "deploy": "vite build && gh-pages -d dist -r git@github.com:SophoGurabanidze/wellix-website.git"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.20.6",
+    "@turf/turf": "^7.2.0",
+    "framer-motion": "^12.6.3",
+    "leaflet": "^1.9.4",
     "lucide-react": "^0.482.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.3.0"
   },
   "devDependencies": {
@@ -33,4 +38,3 @@
     "vite": "^6.2.0"
   }
 }
-

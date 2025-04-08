@@ -2,8 +2,10 @@ import React from 'react'
 
 const CompanyToday = () => {
   return (
-    <div>CompanyToday</div>
+  
+    <div >Company Today</div>
   )
 }
 
 export default CompanyToday
+

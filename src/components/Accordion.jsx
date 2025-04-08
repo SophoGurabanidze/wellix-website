@@ -35,7 +35,7 @@ const Accordion = ({ data }) => {
          
           <div
             className={`transition-max-height duration-500 ease-in-out ${
-              selected === item.id ? "max-h-[1000px] p-6 bg-blue-50" : "max-h-0 overflow-hidden"
+              selected === item.id ? "max-h-[1000px] p-6 bg-blue-50" : "max-h-0 "
             }`}
           >
             <p className="text-gray-800 whitespace-pre-line">
