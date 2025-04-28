@@ -12,7 +12,7 @@ import { useState,useEffect } from 'react';
 import Layout from "./components/Layout";
 import ErrorPage from "./Pages/ErrorPage";
 
-import Home from "./pages/Home";
+import Home from "./Pages/Home";
 import ShortHistory from "./Pages/ShortHistory";
 import AboutUs from "./pages/CompanyToday";
 import OurAdvantages from "./Pages/OurAdvantages";
