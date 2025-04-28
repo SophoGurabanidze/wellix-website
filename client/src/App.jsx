@@ -1,0 +1,113 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import logo from "./assets/wellix-logo.jpeg";
+import globeLeft from "./assets/globe-left.png";
+import globeRight from "./assets/globe-right.png";
+
+
+import { useState,useEffect } from 'react';
+import Layout from "./components/Layout";
+import ErrorPage from "./Pages/ErrorPage";
+
+import Home from "./pages/Home";
+import ShortHistory from "./Pages/ShortHistory";
+import AboutUs from "./pages/CompanyToday";
+import OurAdvantages from "./Pages/OurAdvantages";
+import Partners from "./Pages/Partners";
+
+import Services from "./Pages/Services";
+import BuildingWells from "./Pages/BuildingWells";
+import Maintenance from "./Pages/Maintenance";
+import Conservation from "./Pages/Conservation";
+
+import Projects from "./Pages/Projects";
+import CompletedProjects from "./pages/CompletedProjects";
+import ProjectDetail from "./pages/ProjectDetail";
+
+import Login from "./Pages/Login";
+import Dashboard from "./Pages/Dashboard";
+import AddProject from "./Pages/AddProject";
+import EditProject from "./Pages/EditProject";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import ThankYou from "./Pages/ThankYou";
+import Loader from "./components/Loader";
+
+
+export default function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    document.body.classList.add("loading");
+  
+    const preloadImages = [logo, globeLeft, globeRight].map((src) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = resolve;
+        img.onerror = resolve;
+      });
+    });
+  
+    Promise.all(preloadImages).then(() => {
+      document.body.classList.remove("loading");
+      document.body.classList.add("loaded");
+
+      setLoading(false);
+
+    });
+  }, []);
+
+  if (loading) return <Loader />;
+  return (
+    <Router>
+        
+      <Routes>
+        <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
+          
+          <Route index element={<Home />} />
+
+        
+          <Route path="about">
+            <Route path="short-history" element={<ShortHistory />} />
+            <Route path="company-today" element={<AboutUs />} />
+            <Route path="our-advantages" element={<OurAdvantages />} />
+            <Route path="reference-clients" element={<Partners />} />
+          </Route>
+
+        
+          <Route path="services" element={<Services />} />
+          <Route path="building-new-wells" element={<BuildingWells />} />
+          <Route path="maintenance" element={<Maintenance />} />
+          <Route path="conservation" element={<Conservation />} />
+
+         
+          <Route path="projects" element={<Projects />} />
+          <Route path="projects/completed" element={<CompletedProjects />} />
+          <Route path="projects/:id" element={<ProjectDetail />} />
+
+         
+          <Route path="faq" element={<FAQ />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="/thank-you" element={<ThankYou />} />
+
+
+          <Route path="/admin" element={<Login />} />
+      <Route element={<ProtectedRoute />}>
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/projects/new" element={<AddProject />} />
+          <Route path="/admin/projects/edit/:id" element={<EditProject />} />
+      </Route>
+
+<Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+}
+

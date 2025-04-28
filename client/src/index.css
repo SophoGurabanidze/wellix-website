@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body.loading {
+  overflow: hidden;
+}
+
+#root {
+  visibility: hidden;
+}
+
+body.loaded #root {
+  visibility: visible;
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans Georgian', sans-serif;
+}
+
+
+.water-bg {
+  background: linear-gradient(45deg, #b5bfc9, #6ba5c7, #e5eef1);
+  background-size: 400% 400%;
+  animation: waterFlow 5s infinite linear;
+}
+
+@keyframes waterFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.partners-container {
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background: #f9fafb;
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background: #e5e7eb;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tab.active {
+  background: #1f2937;
+  color: white;
+}
+
+.main-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.globe-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 70%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.globe-wrapper.left {
+  left: 53%;
+}
+
+.globe-wrapper.right {
+  right: 0%;
+}
+
+/* .globe-mask {
+ 
+} */
+
+.globe-image {
+
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.arc-list-client,
+.arc-list-vendor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.arc-list-client {
+  left: 0;
+}
+
+.arc-list-vendor {
+  right: 0;
+}
+
+.arc-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
