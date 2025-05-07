@@ -11,7 +11,7 @@ const EditProject = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await API.get(`/completed-projects`);
+        const res = await API.get(`/api/completed-projects`);
         const project = res.data.find((p) => p._id === id);
         if (!project) throw new Error("Not found");
 
@@ -61,7 +61,7 @@ const EditProject = () => {
        
       };
 
-      await API.put(`/completed-projects/${id}`, updated);
+      await API.put(`/api/completed-projects/${id}`, updated);
       navigate("/admin/dashboard");
     } catch (err) {
       setError(`Project not found or failed to load ${err}`);

@@ -9,7 +9,7 @@ const AdminBlogList = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/blogs`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs`);
       const data = await res.json();
       setBlogs(data);
     } catch (err) {
@@ -20,7 +20,7 @@ const AdminBlogList = () => {
   const deleteBlog = async (id) => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/blogs/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

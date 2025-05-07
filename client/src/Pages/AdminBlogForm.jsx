@@ -7,7 +7,7 @@ const AdminBlogForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/blogs`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

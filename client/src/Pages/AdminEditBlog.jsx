@@ -11,7 +11,7 @@ const AdminEditBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/blogs/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`);
         const data = await res.json();
         setForm({ title: data.title, text: data.text, image: data.image });
       } catch (err) {
@@ -24,7 +24,7 @@ const AdminEditBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/blogs/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

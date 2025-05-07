@@ -120,7 +120,7 @@ const Navbar = () => {
             onMouseLeave={handleMouseLeave}
           >
             <Link
-              to="/projects"
+              to="/projects/completed"
               className="hover:underline decoration-sky-700 decoration-2 underline-offset-4"
               onClick={handleClick}
             >
@@ -169,7 +169,7 @@ const Navbar = () => {
             </ul>
           )}
           <li className="flex justify-between items-center px-4 py-2 hover:bg-sky-800" onClick={() => toggleMobileDropdown("projects")}>
-            <Link to="/projects">პროექტები</Link> <ChevronDown />
+            <Link to="/projects/completed">პროექტები</Link> <ChevronDown />
           </li>
           {mobileDropdown === "projects" && (
             <ul className="pl-6">

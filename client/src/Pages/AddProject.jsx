@@ -41,7 +41,7 @@ const AddProject = () => {
        
       };
 
-      await API.post("/completed-projects", newProject);
+      await API.post("api/completed-projects", newProject);
       navigate("/admin/dashboard");
     } catch (err) {
       setError(`Failed to create project${err}`);

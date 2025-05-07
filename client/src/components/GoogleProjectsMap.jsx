@@ -45,7 +45,7 @@ export default function GoogleProjectsMap() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await API.get('/completed-projects');
+        const res = await API.get('/api/completed-projects');
         setProjects(res.data);
       } catch (err) {
         console.error('Failed to fetch projects:', err);

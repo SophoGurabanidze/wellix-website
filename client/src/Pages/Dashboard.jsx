@@ -8,7 +8,7 @@ const Dashboard = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await API.get("/completed-projects");
+      const res = await API.get("/api/completed-projects");
       setProjects(res.data);
     } catch (err) {
       setError(`Failed to load projects ${err}`);
@@ -19,7 +19,7 @@ const Dashboard = () => {
     if (!window.confirm("Are you sure you want to delete this project?")) return;
 
     try {
-      await API.delete(`/completed-projects/${id}`);
+      await API.delete(`/api/completed-projects/${id}`);
       fetchProjects();
     } catch (err) {
       alert(`Failed to delete project ${err}`);

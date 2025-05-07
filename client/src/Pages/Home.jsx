@@ -17,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch("http://localhost:1337/api/blogs");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs`);
         const data = await res.json();
         setBlogPosts(data);
       } catch (err) {
