@@ -15,7 +15,7 @@ import ErrorPage from "./Pages/ErrorPage";
 import Home from "./Pages/Home";
 import BlogDetail from "./Pages/BlogDetail";
 import ShortHistory from "./Pages/ShortHistory";
-import AboutUs from "./pages/CompanyToday";
+import CompanyToday from "./Pages/CompanyToday"
 import OurAdvantages from "./Pages/OurAdvantages";
 import Partners from "./Pages/Partners";
 
@@ -82,7 +82,7 @@ export default function App() {
         
           <Route path="about">
             <Route path="short-history" element={<ShortHistory />} />
-            <Route path="about-us" element={<AboutUs />} />
+            <Route path="about-us" element={<CompanyToday />} />
             <Route path="our-advantages" element={<OurAdvantages />} />
             <Route path="reference-clients" element={<Partners />} />
           </Route>
