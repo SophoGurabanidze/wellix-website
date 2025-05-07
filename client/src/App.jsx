@@ -25,8 +25,8 @@ import Maintenance from "./Pages/Maintenance";
 import Conservation from "./Pages/Conservation";
 
 import Projects from "./Pages/Projects";
-import CompletedProjects from "./pages/CompletedProjects";
-import ProjectDetail from "./pages/ProjectDetail";
+import CompletedProjects from "./Pages/CompletedProjects";
+import ProjectDetail from "./Pages/ProjectDetail";
 
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
@@ -39,8 +39,8 @@ import AdminBlogForm from "./Pages/AdminBlogForm";
 import AdminBlogList from "./Pages/AdminBlogList";
 import AdminEditBlog from "./Pages/AdminEditBlog";
 
-import FAQ from "./pages/FAQ";
-import Contact from "./pages/Contact";
+import FAQ from "./Pages/FAQ";
+import Contact from "./Pages/Contact";
 import ThankYou from "./Pages/ThankYou";
 import Loader from "./components/Loader";
 import ScrollToTop from "./components/ScrollToTop";
