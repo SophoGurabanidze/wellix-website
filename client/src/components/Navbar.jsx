@@ -148,11 +148,11 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <ul className="md:hidden flex flex-col bg-primary text-gray-300 p-4">
           <li className="flex justify-between items-center px-4 py-2 hover:bg-sky-800" onClick={() => toggleMobileDropdown("about")}>
-            <Link to="/about/company-today">ჩვენ შესახებ</Link> <ChevronDown />
+            <Link to="/about/about-us">ჩვენ შესახებ</Link> <ChevronDown />
           </li>
           {mobileDropdown === "about" && (
             <ul className="pl-6">
-              <li><Link to="/about-us" className="block py-2 hover:bg-sky-600">ჩვენ შესახებ</Link></li>
+              <li><Link to="/about/about-us" className="block py-2 hover:bg-sky-600">ჩვენ შესახებ</Link></li>
               <li><Link to="/about/short-history" className="block py-2 hover:bg-sky-600">მნიშვნელოვანი მოვლენები</Link></li>
               <li><Link to="/about/our-advantages" className="block py-2 hover:bg-sky-600">ჩვენი უპირატესობები</Link></li>
               <li><Link to="/about/reference-clients" className="block py-2 hover:bg-sky-600">პარტნიორები</Link></li>
