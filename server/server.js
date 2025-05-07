@@ -5,6 +5,8 @@ import cors from "cors";
 import completedProjectsRoutes from "./routes/completedProjects.js";
 import authRoutes from "./routes/auth.js";
 import contactRoutes from "./routes/contact.js";
+import blogRoutes from "./routes/blog.js";
+
 
 
 
@@ -21,6 +23,7 @@ app.use(express.json());
 app.use("/api/completed-projects", completedProjectsRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/contact", contactRoutes);
+app.use("/api/blogs", blogRoutes);
 
 const PORT = process.env.PORT || 1337;
 

@@ -44,7 +44,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:1337/contact/send", formData);
+      await axios.post(`${import.meta.env.VITE_API_URL}/contact/send`, formData);
       setStatus("success");
       setFormData(initialState);
       setTimeout(() => navigate("/thank-you"), 3000);

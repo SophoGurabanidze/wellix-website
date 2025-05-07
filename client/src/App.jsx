@@ -13,6 +13,7 @@ import Layout from "./components/Layout";
 import ErrorPage from "./Pages/ErrorPage";
 
 import Home from "./Pages/Home";
+import BlogDetail from "./Pages/BlogDetail";
 import ShortHistory from "./Pages/ShortHistory";
 import AboutUs from "./pages/CompanyToday";
 import OurAdvantages from "./Pages/OurAdvantages";
@@ -32,11 +33,17 @@ import Dashboard from "./Pages/Dashboard";
 import AddProject from "./Pages/AddProject";
 import EditProject from "./Pages/EditProject";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ChangePassword from "./Pages/ChangePassword";
+
+import AdminBlogForm from "./Pages/AdminBlogForm";
+import AdminBlogList from "./Pages/AdminBlogList";
+import AdminEditBlog from "./Pages/AdminEditBlog";
 
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import ThankYou from "./Pages/ThankYou";
 import Loader from "./components/Loader";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 export default function App() {
@@ -66,16 +73,16 @@ export default function App() {
   if (loading) return <Loader />;
   return (
     <Router>
-        
+        <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
           
           <Route index element={<Home />} />
-
+          <Route path="/blog/:id" element={<BlogDetail />} />
         
           <Route path="about">
             <Route path="short-history" element={<ShortHistory />} />
-            <Route path="company-today" element={<AboutUs />} />
+            <Route path="about-us" element={<AboutUs />} />
             <Route path="our-advantages" element={<OurAdvantages />} />
             <Route path="reference-clients" element={<Partners />} />
           </Route>
@@ -100,8 +107,12 @@ export default function App() {
           <Route path="/admin" element={<Login />} />
       <Route element={<ProtectedRoute />}>
           <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/change-password" element={<ChangePassword />} />
           <Route path="/admin/projects/new" element={<AddProject />} />
           <Route path="/admin/projects/edit/:id" element={<EditProject />} />
+          <Route path="/admin/blog/new" element={<AdminBlogForm />} />
+          <Route path="/admin/blogs" element={<AdminBlogList />} />
+          <Route path="/admin/blog/edit/:id" element={<AdminEditBlog />} />
       </Route>
 
 <Route path="*" element={<ErrorPage />} />

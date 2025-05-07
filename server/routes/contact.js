@@ -28,7 +28,7 @@ router.post("/send", async (req, res) => {
     service: "gmail",
     auth: {
       user: "info@wellix.ge", 
-      pass: process.env.EMAIL_PASS, // set this in your .env
+      pass: process.env.EMAIL_PASS, 
     },
   });
 

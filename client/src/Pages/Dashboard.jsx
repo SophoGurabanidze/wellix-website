@@ -36,6 +36,12 @@ const Dashboard = () => {
       <div className="w-64 bg-white shadow p-6 flex flex-col  min-h-screen text-center">
         <div>
           <h2 className="text-xl font-bold mb-8">Welcome, Admin</h2>
+          <Link
+  to="/admin/change-password"
+  className="block bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 mb-4"
+>
+  Change Password
+</Link>
 
           <Link
             to="/admin/projects/new"
@@ -44,6 +50,19 @@ const Dashboard = () => {
             + Add Project
           </Link>
         </div>
+
+        <Link
+  to="/admin/blog/new"
+  className="block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 mb-4"
+>
+  + Add Blog
+</Link>
+<Link
+  to="/admin/blogs"
+  className="block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 mb-4"
+>
+  Manage Blogs
+</Link>
 
         <button
           onClick={() => {

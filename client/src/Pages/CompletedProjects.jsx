@@ -1,6 +1,6 @@
 import React from 'react'
 
-// import GeorgiaProjectsMap from '../components/GeorgianPorjectsMap'
+
 import GoogleProjectsMap from '../components/GoogleProjectsMap';
 
 const CompletedProjects = () => {

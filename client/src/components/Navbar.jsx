@@ -61,7 +61,7 @@ const Navbar = () => {
             onMouseLeave={handleMouseLeave}
           >
             <Link
-              to="/about/company-today"
+              to="/about/about-us"
               className="hover:underline decoration-sky-700 decoration-2 underline-offset-4"
               onClick={handleClick}
             >
@@ -70,7 +70,7 @@ const Navbar = () => {
             {activeDropdown === "about" && (
               <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-800 shadow-md w-72 border border-gray-200 rounded">
                 <li className="border-b border-gray-200">
-                  <Link to="/about/company-today" className="block px-4 py-2 hover:bg-gray-200">ჩვენ შესახებ</Link>
+                  <Link to="/about/about-us" className="block px-4 py-2 hover:bg-gray-200">ჩვენ შესახებ</Link>
                 </li>
                 <li className="border-b border-gray-200">
                   <Link to="/about/short-history" className="block px-4 py-2 hover:bg-gray-200">მნიშვნელოვანი მოვლენები</Link>
@@ -152,7 +152,7 @@ const Navbar = () => {
           </li>
           {mobileDropdown === "about" && (
             <ul className="pl-6">
-              <li><Link to="/about/company-today" className="block py-2 hover:bg-sky-600">ჩვენ შესახებ</Link></li>
+              <li><Link to="/about-us" className="block py-2 hover:bg-sky-600">ჩვენ შესახებ</Link></li>
               <li><Link to="/about/short-history" className="block py-2 hover:bg-sky-600">მნიშვნელოვანი მოვლენები</Link></li>
               <li><Link to="/about/our-advantages" className="block py-2 hover:bg-sky-600">ჩვენი უპირატესობები</Link></li>
               <li><Link to="/about/reference-clients" className="block py-2 hover:bg-sky-600">პარტნიორები</Link></li>

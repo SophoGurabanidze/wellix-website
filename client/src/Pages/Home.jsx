@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import slider1 from "../assets/images/slider1.png";
@@ -5,21 +6,27 @@ import slider2 from "../assets/images/slider2.png";
 import slider3 from "../assets/images/slider3.png";
 import slider4 from "../assets/images/slider4.png";
 import slider5 from "../assets/images/slider5.png";
-import blog1 from "../assets/images/Blog1.png";
 
 const images = [slider1, slider2, slider3, slider4, slider5];
-
-const blogPosts = [
-  { id: 1, title: "How We Build Premium Wells", text: "Discover our step-by-step process for high-quality well construction.", image: blog1 },
-  { id: 2, title: "Sustainable Water Solutions", text: "How we ensure environmentally friendly water sourcing.",  image: blog1},
-  { id: 3, title: "Choosing the Right Pump", text: "Tips for selecting the optimal pump for your well.",  image: blog1},
-];
 
 const Home = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [currentBlog, setCurrentBlog] = useState(0);
+  const [blogPosts, setBlogPosts] = useState([]);
 
   useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch("http://localhost:1337/api/blogs");
+        const data = await res.json();
+        setBlogPosts(data);
+      } catch (err) {
+        console.error("Failed to fetch blogs", err);
+      }
+    };
+
+    fetchBlogs();
+
     const slider = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 3000);
@@ -32,7 +39,7 @@ const Home = () => {
       clearInterval(slider);
       clearInterval(blogSlider);
     };
-  }, []);
+  }, [blogPosts.length]);
 
   return (
     <div className="flex flex-col gap-16">
@@ -52,29 +59,49 @@ const Home = () => {
       <section className="container mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold mb-4">ჩვენ შესახებ</h2>
         <p className="mb-6 text-gray-700">
-        კომპანია ველიქსი დაარსდა 2021 წელს, რათა მის გერმანელ პარტნიორებთან ერთად თავისი წვლილი შეეტანა საქართველოში პრემიუმ ხარისხის ჭაბურღილების მშენებლობის საქმეში, რაც პირველ რიგში გულისხმობს, რომ საქართველოში ეტაპობრივად დამკვიდრდეს ჭაბურღილის მშენებლობის და მოწყობის ისეთი სტანდარტი, რომელიც შესაძლებელს გახდის ოპტიმალურად და გარემოსათვის ზიანის მიყენების გარეშე იქნას ათვისებული ჩვენს ქვეყანაში არსებული მიწისქვეშა წყლების რესურსი.
+          კომპანია ველიქსი დაარსდა 2021 წელს, რათა მის გერმანელ პარტნიორებთან ერთად თავისი წვლილი შეეტანა საქართველოში პრემიუმ ხარისხის ჭაბურღილების მშენებლობის საქმეში, რაც პირველ რიგში გულისხმობს, რომ საქართველოში ეტაპობრივად დამკვიდრდეს ჭაბურღილის მშენებლობის და მოწყობის ისეთი სტანდარტი, რომელიც შესაძლებელს გახდის ოპტიმალურად და გარემოსათვის ზიანის მიყენების გარეშე იქნას ათვისებული ჩვენს ქვეყანაში არსებული მიწისქვეშა წყლების რესურსი.
         </p>
-        <Link to="/about-us" className="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+        <Link to="about/about-us" className="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
           წაიკითხეთ მეტი
         </Link>
       </section>
 
       {/* Blog Cards Slider */}
-      <section className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-8">სიახლეები</h2>
-        <div className="relative w-full overflow-hidden">
-          <div className="flex transition-transform duration-700" style={{ transform: `translateX(-${currentBlog * 100}%)` }}>
-            {blogPosts.map((post) => (
-             <div key={post.id} className="min-w-full flex flex-col items-center gap-4 p-6">
-             <img src={post.image} alt={post.title} className="w-full h-[400px] object-cover rounded-lg shadow-md" />
-             <h3 className="text-2xl font-semibold mt-4">{post.title}</h3>
-             <p className="text-gray-600 text-center">{post.text}</p>
-             <Link to={`/blog/${post.id}`} className="mt-4 text-blue-600 hover:underline">Read more</Link>
-           </div>
-            ))}
+      <section className="w-full container mx-auto px-6 bg-gray-100">
+  <h2 className="text-3xl font-bold text-center mb-8">ბლოგი</h2>
+  <div className="relative w-full overflow-hidden">
+    <div
+      className="flex transition-transform duration-700"
+      style={{ transform: `translateX(-${currentBlog * 100}%)` }}
+    >
+      {blogPosts.map((post) => (
+        <div
+          key={post._id}
+          className="min-w-full flex flex-col md:flex-row items-center gap-6 p-6"
+        >
+          <div className="w-full md:w-1/2">
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full h-[300px] md:h-[400px]  rounded-lg shadow-md"
+            />
+          </div>
+          <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+            <h3 className="text-2xl font-semibold mt-4 md:mt-0">{post.title}</h3>
+            <p className="text-gray-600 line-clamp-3 mt-2">{post.text}</p>
+            <Link
+              to={`/blog/${post._id}`}
+              className="mt-4 text-blue-600 hover:underline"
+            >
+              წაიკითხეთ მეტი
+            </Link>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Services Overview */}
       <section className="bg-gray-50 py-16">
@@ -82,7 +109,6 @@ const Home = () => {
           <h2 className="text-3xl font-bold mb-4">ჩვენი მომსახურებები</h2>
           <p className="mb-6 text-gray-700">
             ჩვენ გთავაზობთ წყლის მოპოვებასთან დაკავშირებული მომსახურებების ფართო სპექტრს ჭაბურღილის მშენებლობიდან დაწყებული არსებული ჭაბურღილის კონსერავაციით დასრულებული
-          
           </p>
           <Link to="/services" className="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
             იხილეთ მომსახურებები
