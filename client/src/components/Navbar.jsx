@@ -163,9 +163,9 @@ const Navbar = () => {
           </li>
           {mobileDropdown === "services" && (
             <ul className="pl-6">
-              <li><Link to="/services/building-new-wells" className="block py-2 hover:bg-sky-600">ჭაბურღილის მშენებლობა</Link></li>
-              <li><Link to="/services/rehabilitation-wells" className="block py-2 hover:bg-sky-600">ჭაბურღილის რეაბილიტაცია</Link></li>
-              <li><Link to="/services/conservation-wells" className="block py-2 hover:bg-sky-600">ჭაბურღილის კონსერვაცია</Link></li>
+              <li><Link to="building-new-wells" className="block py-2 hover:bg-sky-600">ჭაბურღილის მშენებლობა</Link></li>
+              <li><Link to="maintenance" className="block py-2 hover:bg-sky-600">ჭაბურღილის რეაბილიტაცია</Link></li>
+              <li><Link to="conservation" className="block py-2 hover:bg-sky-600">ჭაბურღილის კონსერვაცია</Link></li>
             </ul>
           )}
           <li className="flex justify-between items-center px-4 py-2 hover:bg-sky-800" onClick={() => toggleMobileDropdown("projects")}>
