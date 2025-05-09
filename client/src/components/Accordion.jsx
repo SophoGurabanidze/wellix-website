@@ -18,8 +18,8 @@ const Accordion = ({ data }) => {
           <button
             onClick={() => handleSelect(item.id)}
             className="w-full flex justify-between items-center px-6 py-5 
-                      bg-gradient-to-r from-blue-400 to-blue-600 
-                      hover:from-blue-500 hover:to-blue-700 
+                      bg-gradient-to-r from-cyan-500 to-cyan-600 
+                      hover:from-cyan-500 hover:to-cyan-700 
                       text-white font-semibold text-lg 
                       rounded-t-2xl transition-all duration-300"
           >
