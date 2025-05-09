@@ -61,13 +61,13 @@ const Home = () => {
         <p className="mb-6 text-gray-700">
           კომპანია ველიქსი დაარსდა 2021 წელს, რათა მის გერმანელ პარტნიორებთან ერთად თავისი წვლილი შეეტანა საქართველოში პრემიუმ ხარისხის ჭაბურღილების მშენებლობის საქმეში, რაც პირველ რიგში გულისხმობს, რომ საქართველოში ეტაპობრივად დამკვიდრდეს ჭაბურღილის მშენებლობის და მოწყობის ისეთი სტანდარტი, რომელიც შესაძლებელს გახდის ოპტიმალურად და გარემოსათვის ზიანის მიყენების გარეშე იქნას ათვისებული ჩვენს ქვეყანაში არსებული მიწისქვეშა წყლების რესურსი.
         </p>
-        <Link to="about/about-us" className="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+        <Link to="about/about-us" className="inline-block bg-cyan-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
           წაიკითხეთ მეტი
         </Link>
       </section>
 
       {/* Blog Cards Slider */}
-      <section className="w-full container mx-auto px-6 bg-gray-100">
+      <section className="w-full bg-gray-100 px-4 sm:px-8 lg:px-16">
   <h2 className="text-3xl font-bold text-center mb-8">ბლოგი</h2>
   <div className="relative w-full overflow-hidden">
     <div
@@ -91,7 +91,7 @@ const Home = () => {
             <p className="text-gray-600 line-clamp-3 mt-2">{post.text}</p>
             <Link
               to={`/blog/${post._id}`}
-              className="mt-4 text-blue-600 hover:underline"
+              className="mt-4 text-cyan-600 hover:underline"
             >
               წაიკითხეთ მეტი
             </Link>
@@ -104,13 +104,13 @@ const Home = () => {
 
 
       {/* Services Overview */}
-      <section className="bg-gray-50 py-16">
+      <section className=" py-16">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">ჩვენი მომსახურებები</h2>
           <p className="mb-6 text-gray-700">
             ჩვენ გთავაზობთ წყლის მოპოვებასთან დაკავშირებული მომსახურებების ფართო სპექტრს ჭაბურღილის მშენებლობიდან დაწყებული არსებული ჭაბურღილის კონსერავაციით დასრულებული
           </p>
-          <Link to="/services" className="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+          <Link to="/services" className="inline-block bg-cyan-600 text-white px-6 py-2 rounded hover:bg-cyan-700 transition">
             იხილეთ მომსახურებები
           </Link>
         </div>
