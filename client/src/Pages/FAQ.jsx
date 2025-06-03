@@ -6,7 +6,10 @@ import Accordion from '../components/Accordion'
 const FAQ = () => {
 
   return (
-    <div>
+    <div className='mb-12'>
+       <h1 className="mt-12 text-4xl text-center font-bold text-primaryBlue mb-12">
+          ხშირად დასმული კითხვები
+        </h1>
       <Accordion data={data}/>
     </div>
   )

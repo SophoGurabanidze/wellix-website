@@ -47,7 +47,7 @@ const timelineDataSecondRow = [
 export default function ShortHistory() {
   return (
     <div className="px-4 py-10 bg-gradient-to-b from-white to-blue-50">
-      <h2 className="text-2xl font-bold text-center mb-10 text-blue-800">
+      <h2 className="text-2xl font-bold text-center mb-10 text-primaryBlue">
         კომპანიის განვითარების ძირითადი ეტაპები
       </h2>
 
@@ -61,7 +61,7 @@ export default function ShortHistory() {
             <div className="w-4 h-4 bg-blue-600 rounded-full z-10"></div>
             <div className="h-16 w-1 bg-blue-400"></div>
             <div className="mt-2 text-lg font-semibold text-blue-200">{item.year}</div>
-            <div className="mt-1 font-bold text-blue-800">{item.title}</div>
+            <div className="mt-1 font-bold text-primaryBlue">{item.title}</div>
             <p className="text-sm mt-1 text-gray-700">{item.description}</p>
           </div>
         ))}
@@ -78,7 +78,7 @@ export default function ShortHistory() {
             <div className="w-4 h-4 bg-blue-600 rounded-full z-10"></div>
             <div className="h-16 w-1 bg-blue-400"></div>
             <div className="mt-2 text-lg font-semibold text-blue-200">{item.year}</div>
-            <div className="mt-1 font-bold text-blue-800">{item.title}</div>
+            <div className="mt-1 font-bold text-primaryBlue">{item.title}</div>
             <p className="text-sm mt-1 text-gray-700">{item.description}</p>
           </div>
         ))}

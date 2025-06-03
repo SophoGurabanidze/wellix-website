@@ -27,7 +27,7 @@ export default function OurAdvantages() {
   return (
     <section className="bg-white py-16 px-4 sm:px-6 lg:px-20">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+        <h2 className="text-3xl font-bold text-center text-primaryBlue mb-12">
           რატომ უნდა აგვირჩიოთ ჩვენ
         </h2>
 
@@ -57,7 +57,7 @@ export default function OurAdvantages() {
                 </div>
 
                 {/* Text Content */}
-                <div className="p-6 sm:p-8 text-gray-800 flex-1">
+                <div className="p-6 sm:p-8 text-primaryBlue flex-1">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold">{adv.title}</h3>
 

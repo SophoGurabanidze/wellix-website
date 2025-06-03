@@ -6,7 +6,9 @@ import GoogleProjectsMap from '../components/GoogleProjectsMap';
 const CompletedProjects = () => {
   return (
     <div className="p-4">
-    <h1 className="text-2xl font-bold mb-4 text-center">გამორჩეული პროექტები</h1>
+    <h1 className="mt-12 text-4xl text-center font-bold text-primaryBlue mb-4">
+        გამორჩეული პროექტები
+        </h1>
     <GoogleProjectsMap/>
   </div>
    

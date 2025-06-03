@@ -17,7 +17,7 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-white mb-3">ჩვენ შესახებ</h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/about/company-today" className="hover:text-white">ჩვენ შესახებ</Link></li>
+            <li><Link to="/about/about-us" className="hover:text-white">ჩვენ შესახებ</Link></li>
             <li><Link to="/about/short-history" className="hover:text-white">მნიშვნელოვანი მოვლენები</Link></li>
             <li><Link to="/about/our-advantages" className="hover:text-white">ჩვენი უპირატესობები</Link></li>
             <li><Link to="/about/reference-clients" className="hover:text-white">პარტნიორები</Link></li>
@@ -28,9 +28,9 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-white mb-3">მომსახურებები</h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/services/building-new-wells" className="hover:text-white">ჭაბურღილის მშენებლობა</Link></li>
-            <li><Link to="/services/maintenance" className="hover:text-white">ჭაბურღილის რეაბილიტაცია</Link></li>
-            <li><Link to="/services/conservation" className="hover:text-white">ჭაბურღილის კონსერვაცია</Link></li>
+            <li><Link to="building-new-wells" className="hover:text-white">ჭაბურღილის მშენებლობა</Link></li>
+            <li><Link to="maintenance" className="hover:text-white">ჭაბურღილის რეაბილიტაცია</Link></li>
+            <li><Link to="conservation" className="hover:text-white">ჭაბურღილის კონსერვაცია</Link></li>
           </ul>
         </div>
 

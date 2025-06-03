@@ -42,7 +42,7 @@ const Partners = () => {
         <button
           onClick={() => setActiveTab("clients")}
           className={`px-4 py-2 rounded-md text-sm md:text-base transition ${
-            isClients ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"
+            isClients ? "bg-primaryBlue text-white" : "bg-gray-200 text-gray-700"
           }`}
         >
           გამორჩეული კლიენტები
@@ -50,7 +50,7 @@ const Partners = () => {
         <button
           onClick={() => setActiveTab("vendors")}
           className={`px-4 py-2 rounded-md text-sm md:text-base transition ${
-            !isClients ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"
+            !isClients ? "bg-primaryBlue text-white" : "bg-gray-200 text-gray-700"
           }`}
         >
           გამორჩეული მომწოდებლები

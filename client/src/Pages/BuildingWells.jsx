@@ -4,22 +4,22 @@ import steps from '../data/buildingWellsSteps.json'
 const BuildingWells = () => {
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-6">
+      <h1 className="text-3xl font-bold text-primaryBlue text-center mb-6">
         ახალი ჭაბურღილის მშენებლობა
       </h1>
 
       <section className="bg-white shadow-md rounded-2xl p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-2 text-center">
+        <h2 className="text-xl text-primaryBlue font-semibold mb-2 text-center">
           პოტენციური დამკვეთისათვის შეთავაზების მომზადება
         </h2>
-        <p className="text-gray-700 text-center">
+        <p className="text-gray-500 text-center">
         ჩვენთვის მნიშვნელოვანია რაც შეიძლება სწრაფად მიიღოთ ჭაბურღილის კონსტრუქციული ნახაზი, რომლის საფუძველზეც შეიძლება მომზადდეს კლიენტზე მორგებული შესაბამისი ერთი ან რამდენიმე ეკონომიკური შეთავაზება ტექნიკური მოთხოვნების გათვალისწინებით. შეთავაზების მომზადების დროს ხდება ჩვენს მიერ შესასრულებელი სამუშაოების ღირებულების და საინსტალაციო მასალების ღირებულების ერთმანეთისაგან გამიჯვნა, რადგან კლიენტმა უფრო მარტივად შესძლოს მისთვის ტექნიკურად და ფინანსურად შესაფერისი საინსტალაციო მასალების შერჩევა
 
         </p>
       </section>
 
       <section className="bg-white shadow-md rounded-2xl p-6">
-        <h2 className="text-xl font-semibold mb-4 text-center">
+        <h2 className="text-xl text-primaryBlue font-semibold mb-4 text-center">
           ჭაბურღილის მშენებლობის ეტაპები და სავარაუდო ვადები
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
@@ -28,7 +28,7 @@ const BuildingWells = () => {
               key={index}
               className="rounded-xl p-4 relative pb-20 border border-gray-300 flex flex-col justify-center text-center"
             >
-              <p className="font-medium"> {step.title}</p>
+              <p className="font-medium text-gray-700"> {step.title}</p>
               {step.content && (
                 <p className="text-sm text-gray-600 mt-2">{step.content}</p>
               )}

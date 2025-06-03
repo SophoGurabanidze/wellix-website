@@ -71,7 +71,7 @@ const Contact = () => {
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
-        <h2 className="text-xl sm:text-2xl font-semibold text-sky-700">გამოგვიგზავნეთ მოთხოვნის ფორმა</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold text-sky-700">გამოგვიგზავნეთ მოთხოვნის ფორმა</h2>
 
         <input name="company" value={formData.company} onChange={handleChange} placeholder="კომპანიის დასახელება" className="w-full border p-2 rounded text-sm sm:text-base" />
         <input name="name" value={formData.name} onChange={handleChange} required placeholder="სახელი და გვარი" className="w-full border p-2 rounded text-sm sm:text-base" />

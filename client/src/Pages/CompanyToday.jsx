@@ -45,7 +45,7 @@ const CompanyToday = () => {
                 } gap-6 md:gap-10 items-center`}
               >
                 <div
-                  className={`flex-1 text-gray-800 text-[17px] leading-relaxed bg-white bg-opacity-90 p-6 md:p-8 rounded-lg shadow-md`}
+                  className={`flex-1 text-gray-500 text-[17px] leading-relaxed bg-white bg-opacity-90 p-6 md:p-8 rounded-lg shadow-md`}
                 >
                   {text}
                 </div>
