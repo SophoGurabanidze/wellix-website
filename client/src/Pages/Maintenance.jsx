@@ -12,12 +12,12 @@ import {
 import image1 from "../assets/chart/chart.png";
 import image2 from "../assets/chart/chart-2.png";
 import image3 from "../assets/chart/chart-3.png";
-import image4 from "../assets/maintenance/maintenance-2.png"
-import image5 from "../assets/maintenance/maintenance-3.png"
+import image4 from "../assets/maintenance/maintenance-2.png";
+import image5 from "../assets/maintenance/maintenance-3.png";
 
 const data = [
   { stage: "", value: 75 },
-  { stage: "საექსპლუატაციო პერიოდი", value: 55 },
+  { stage: "ექსპლოატაციის ვადა", value: 55 },
   { stage: "", value: 20 },
 ];
 
@@ -38,7 +38,7 @@ const Maintenance = () => {
   ];
 
   return (
-    <div className=" py-16 px-4 md:px-12">
+    <div className="bg-backgroundBlue py-16 px-4 md:px-12">
       <div className="max-w-6xl mx-auto space-y-24">
         <h1 className="text-4xl text-center font-bold text-primaryBlue mb-12">
           ჭაბურღილის მოვლა და რეგენერაცია
@@ -49,15 +49,19 @@ const Maintenance = () => {
             key={index}
             className={`flex flex-col md:flex-row ${
               index % 2 === 1 ? "md:flex-row-reverse" : ""
-            } items-center gap-8`}
+            } gap-8 ${
+              index === 0 ? "min-h-[500px]" : "items-center "
+            }`}
           >
-            <div className="md:w-1/2 text-justify text-gray-800 leading-relaxed">
+            <div
+  className={`md:w-1/2 text-justify text-gray-800 leading-relaxed flex `}
+>
               {section.text}
             </div>
             <div className="md:w-1/2">
               {section.image === "chart" ? (
-                <div className="relative w-full h-[400px]">
-                  <ResponsiveContainer width="100%" height="100%">
+                <div className="relative w-full h-[300px] md:h-[500px]">
+                  <ResponsiveContainer width="100%" height={300}>
                     <LineChart data={data}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="stage" />
@@ -73,18 +77,20 @@ const Maintenance = () => {
                     </LineChart>
                   </ResponsiveContainer>
 
-                  {/* Chart-related images */}
-                  <div className="absolute top-[55%] left-[15%] w-24 h-24">
-                    <img src={image1} alt="Stage 1" className="w-full h-full object-cover" />
-                    <p className="text-[7px] text-center mt-1">საჭიროებს ჰიდრომექანიკურ აღდგენას</p>
-                  </div>
-                  <div className="absolute top-[55%] left-[45%] w-24 h-24">
-                    <img src={image2} alt="Stage 2" className="w-full h-full object-cover" />
-                    <p className="text-[7px] text-center mt-1">საჭიროებს დამატებითი ქიმიური ნივთიერებებით დამუშავებას</p>
-                  </div>
-                  <div className="absolute top-[55%] left-[75%] w-24 h-24">
-                    <img src={image3} alt="Stage 3" className="w-full h-full object-cover" />
-                    <p className="text-[7px] text-center mt-1">შორსწასული დაზიანებების გამო ექვემდებარება სრულ სანირებას</p>
+                  {/* Absolutely positioned images above X-axis */}
+                  <div className="absolute md:bottom-[290px] bottom-[100px] left-[20px] right-0 flex justify-center md:justify-around gap-[10px] md:gap-0 items-end px-2">
+                    <div className="w-16 h-16 md:w-20 md:h-20">
+                      <img src={image1} alt="Stage 1" className="w-full h-full object-cover" />
+                      <p className="text-[8px] md:text-[8px] text-center mt-1">საჭიროებს ჰიდრომექანიკურ აღდგენას</p>
+                    </div>
+                    <div className="w-16 h-16 md:w-20 md:h-20">
+                      <img src={image2} alt="Stage 2" className="w-full h-full object-cover" />
+                      <p className="text-[8px] md:text-[8px] text-center mt-1">საჭიროებს  ქიმიური ნივთიერებებით დამუშავებას</p>
+                    </div>
+                    <div className="w-16 h-16 md:w-20 md:h-20">
+                      <img src={image3} alt="Stage 3" className="w-full h-full object-cover" />
+                      <p className="text-[8px] md:text-[8px] text-center mt-1"> დაზიანებების გამო საჭიროებს სრულ სანირებას</p>
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -98,7 +104,7 @@ const Maintenance = () => {
           </div>
         ))}
 
-        {/* Final text block (no image) */}
+    
         <div className="text-gray-800 leading-relaxed text-justify space-y-6">
           <p>
             ჭაბურღილის სრულყოფილი მოვლა-პატრონობის სამუშაოების ფარგლებში აუცილებელია, რომ ჩვენს მიერ განხორციელდეს ჭაბურღილის პასპორტში მითითებული მისი პირველადი პარამეტრების მუდმივი მონიტორინგი. ეს საშუალებას მოგვცემს, რომ საჭიროების შემთხვევაში ჩვენს მიერ მოხდეს ჭაბურღილის ვიდეოდათვალიერება და რეგენერაციის შესაბამისი კონცეფციის მოსამზადებლად ჭაბურღილიდან სპეციფიკური ნიმუშების აღება მისი შემდგომი ლაბორატორიული კვლევისათვის. მოპოვებული მონაცემების დეტალური ანალიზის შედეგად შეფასდება ჭაბურღილის არსებული მდგომარეობა, დადგინდება მისი რეგენერაციის საჭიროება და ასევე განისაზღვრება რეგენერაციის მეთოდი (მექანიკური, ქიმიური ან/და მათი კომბინირებული გამოყენება).
