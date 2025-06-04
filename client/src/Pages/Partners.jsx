@@ -8,11 +8,11 @@ import vendor3 from "../assets/logos/Vendor3.png";
 import vendor4 from "../assets/logos/Vendor4.png";
 import vendor5 from "../assets/logos/Vendor5.png";
 
-import client1 from "../assets/logos/client1.jpg";
-import client2 from "../assets/logos/client2.png";
-import client3 from "../assets/logos/client3.jpeg";
-import client4 from "../assets/logos/client4.png";
-import client5 from "../assets/logos/client5.jpeg";
+import client1 from "../assets/logos/client1.png";
+import client2 from "../assets/logos/client2.jpeg";
+import client3 from "../assets/logos/client3.png";
+import client4 from "../assets/logos/client4.jpeg";
+import client5 from "../assets/logos/client5.png";
 
 const clients = [
   { name: "Client 1", logo: client1 },

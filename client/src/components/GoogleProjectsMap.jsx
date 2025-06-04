@@ -41,6 +41,25 @@ export default function GoogleProjectsMap() {
   const [selectedProject, setSelectedProject] = useState(null);
   const mapRef = useRef(null);
   const originalCenter = useMemo(() => center, []);
+  const [zoom, setZoom] = useState(7);
+
+  useEffect(() => {
+    const updateZoom = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 640) {
+        setZoom(6); // zoomed out for mobile
+      } else {
+        setZoom(7); // default for tablets and desktops
+      }
+    };
+  
+    updateZoom(); // run on mount
+    window.addEventListener('resize', updateZoom); // run on resize
+  
+    return () => window.removeEventListener('resize', updateZoom);
+  }, []);
+  
+
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -90,7 +109,7 @@ export default function GoogleProjectsMap() {
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}
           center={center}
-          zoom={7}
+          zoom={zoom}
           options={mapOptions}
           onLoad={(map) => (mapRef.current = map)}
         >

@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 const services = [
   "ჰიდროგეოლოგიური დასკვნის მომზადება",
   "ჰიდროგეოლოგიური დასკვნის საფუძველზე და  მოთხოვნების შესაბამისად ტექნიკური ნახაზის მომზადება",
-  "კლიენტის მოთხოვნების მიხედვით ბურღვის მეთოდოლოგიის განსაზღვრა და კლიენტისათვის ოპტიმალური კონსტრუქციის შერჩევა",
+  "კლიენტის მოთხოვნების მიხედვით ბურღვის მეთოდოლოგიის განსაზღვრა ",
   "ჭაბურღილის მოწყობა : დიამეტრი  179 მმ-დან-555 მმ-მდე,სიღრმე  20მ-დან -350მ-მდე", 
   "ტუმბოს მონტაჟი დებიტი - 1.5 ლიტრიდან - 40 ლიტრამდე",
-  "ჭაბურღილის მონიტორინგი - ვიდეო დათვალიერება, რეაბილიტაციის სტრატეგიის განსაზღვრა",
+ 
   "ჭაბურღილის რეაბილიტაცია - აღდგენა, არსებული ტუმბოს ახლით შეცვლა",
+  "ჭაბურღილის კონსერვაცია"
 ];
 
 const Services = () => {
@@ -35,7 +36,7 @@ const Services = () => {
 
       <div className="relative">
         {/* Mobile stacked layout */}
-        <div className="flex flex-col gap-8 sm:hidden mt-12 px-4">
+        <div className="text-[14px] flex flex-col gap-8 sm:hidden mt-12 px-4">
           {services.map((text, i) =>
             i === 3 ? (
               <Link
@@ -59,7 +60,7 @@ const Services = () => {
         </div>
 
         {/* Desktop arc layout */}
-        <div className="hidden sm:block">
+        <div className="text-[14px] hidden sm:block">
           {[...services].reverse().map((text, i) => {
             const total = services.length;
             const realIndex = total - 1 - i; 

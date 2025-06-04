@@ -1,7 +1,7 @@
 const timelineData = [
   {
     year: "2002",
-    title: "კომპანიის დაფუძნება",
+    title: " წინამორბედი კომპანიის დაფუძნება",
     description: "მოხდა მანამდე არსებული კომპანიის ბაზაზე და გამოცდილებაზე ახალი კომპანიის ჩამოყალიბება",
   },
   {
@@ -16,12 +16,12 @@ const timelineData = [
   },
   {
     year: "2013–2018",
-    title: "რეგიონული გაფართოება",
+    title: "წყალმომარაგება დაზარალებული მოსახლეობისთვის",
     description: "კონფლიქტისპირა 44 სოფელში წყალმომარაგების სისტემების მოწყობა",
   },
   {
     year: "2021",
-    title: "კომპანიის განახლება",
+    title: "ველიქსის დაფუძნება",
     description: "პირველად განვახორციელეთ შესყიდვები ჩვენი ორი ახალი სტრატეგიული პარტნიორისგან როგორც გერმანიაში, ისე თურქეთში. რამაც მნიშვნელოვნად გააუმჯობესა ჭაბურღილის საინსტალაციო მასალების ხარისხი",
   },
 ];
@@ -46,8 +46,8 @@ const timelineDataSecondRow = [
 
 export default function ShortHistory() {
   return (
-    <div className="px-4 py-10 bg-gradient-to-b from-white to-blue-50">
-      <h2 className="text-2xl font-bold text-center mb-10 text-primaryBlue">
+    <div className="px-4 py-16 bg-gradient-to-b from-white to-blue-50">
+      <h2 className="text-4xl font-bold text-center mb-24  text-primaryBlue">
         კომპანიის განვითარების ძირითადი ეტაპები
       </h2>
 

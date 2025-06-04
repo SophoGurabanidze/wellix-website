@@ -27,7 +27,7 @@ export default function OurAdvantages() {
   return (
     <section className="bg-white py-16 px-4 sm:px-6 lg:px-20">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-primaryBlue mb-12">
+        <h2 className="text-4xl font-bold text-center text-primaryBlue mb-12">
           რატომ უნდა აგვირჩიოთ ჩვენ
         </h2>
 
