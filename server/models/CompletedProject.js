@@ -1,8 +1,14 @@
 import mongoose from "mongoose";
 
 const CompletedProjectSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: String,
+  title: {
+    ka: { type: String, required: true },
+    en: { type: String, default: "" },
+  },
+  description: {
+    ka: { type: String, required: true },
+    en: { type: String, default: "" },
+  },
   position: {
     lat: { type: Number, required: true },
     lng: { type: Number, required: true },
@@ -14,5 +20,3 @@ const CompletedProjectSchema = new mongoose.Schema({
 });
 
 export default mongoose.model("CompletedProject", CompletedProjectSchema);
-
-
