@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import slider1 from "../assets/images/slider1.jpeg";
+import slider1 from "../assets/images/Slider1.jpeg";
 
 const images = [slider1];
 
