@@ -1,19 +1,15 @@
 import { GoogleMap, Marker, InfoWindow, OverlayView } from '@react-google-maps/api';
 import { useEffect, useMemo, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import API from '../api';
 
-const center = {
-  lat: 42.3154,
-  lng: 43.3569,
-};
-
+const center = { lat: 42.3154, lng: 43.3569 };
 const mapOptions = {
   styles: [
     { featureType: "all", elementType: "geometry", stylers: [{ color: "#e3e8f4" }] },
     { featureType: "water", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
     {
-      featureType: "administrative.country",
-      elementType: "geometry.stroke",
+      featureType: "administrative.country", elementType: "geometry.stroke",
       stylers: [{ color: "#ffffff" }, { weight: 3 }, { visibility: "on" }]
     },
     { featureType: "road", stylers: [{ visibility: "off" }] },
@@ -21,16 +17,8 @@ const mapOptions = {
     { featureType: "transit", stylers: [{ visibility: "off" }] },
     { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#4a4a4a" }] },
     { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
-    {
-      featureType: "administrative.country",
-      elementType: "labels.text",
-      stylers: [{ visibility: "off" }]
-    },
-    {
-      featureType: "water",
-      elementType: "labels.text",
-      stylers: [{ visibility: "off" }]
-    }
+    { featureType: "administrative.country", elementType: "labels.text", stylers: [{ visibility: "off" }] },
+    { featureType: "water", elementType: "labels.text", stylers: [{ visibility: "off" }] }
   ],
   disableDefaultUI: true,
   zoomControl: true
@@ -42,24 +30,17 @@ export default function GoogleProjectsMap() {
   const mapRef = useRef(null);
   const originalCenter = useMemo(() => center, []);
   const [zoom, setZoom] = useState(7);
+  const { i18n,t } = useTranslation();
+  const lang = i18n.language;
 
   useEffect(() => {
     const updateZoom = () => {
-      const screenWidth = window.innerWidth;
-      if (screenWidth < 640) {
-        setZoom(6); // zoomed out for mobile
-      } else {
-        setZoom(7); // default for tablets and desktops
-      }
+      setZoom(window.innerWidth < 640 ? 6 : 7);
     };
-  
-    updateZoom(); // run on mount
-    window.addEventListener('resize', updateZoom); // run on resize
-  
+    updateZoom();
+    window.addEventListener('resize', updateZoom);
     return () => window.removeEventListener('resize', updateZoom);
   }, []);
-  
-
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -70,7 +51,6 @@ export default function GoogleProjectsMap() {
         console.error('Failed to fetch projects:', err);
       }
     };
-
     fetchProjects();
   }, []);
 
@@ -86,25 +66,14 @@ export default function GoogleProjectsMap() {
 
   const handleMarkerClick = (project) => {
     setSelectedProject(project);
-
-    const screenWidth = window.innerWidth;
-    const offsetLat = screenWidth < 640
-      ? project.position.lat + 0.1
-      : project.position.lat + 0.25;
-
-    if (mapRef.current) {
-      mapRef.current.panTo({
-        lat: offsetLat,
-        lng: project.position.lng,
-      });
-    }
+    const offsetLat = window.innerWidth < 640 ? project.position.lat + 0.1 : project.position.lat + 0.25;
+    mapRef.current?.panTo({ lat: offsetLat, lng: project.position.lng });
   };
 
   return (
     <div className="relative w-full h-[500px]">
       <div className="absolute top-0 left-0 w-full h-20 bg-white z-10" />
       <div className="absolute bottom-0 left-0 w-full h-20 bg-white z-10" />
-
       <div className="absolute inset-0 z-0">
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}
@@ -126,64 +95,40 @@ export default function GoogleProjectsMap() {
                   icon={customIcon}
                   onClick={() => handleMarkerClick(project)}
                 />
-
                 <OverlayView
                   position={project.position}
                   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                 >
-                  <div
-                    className="flex flex-col items-center"
-                    style={{ transform: `translate(${offsetX}px, ${-offsetY-40}px)` }}
-                  >
-                    {isBelow && (
-                      <div
-                        className="w-0.5 bg-[#3aafa9]"
-                        style={{
-                          height: `${lineHeight}px`,
-                          marginBottom: "4px",
-                        }}
-                      />
-                    )}
-
+                  <div className="flex flex-col items-center" style={{ transform: `translate(${offsetX}px, ${-offsetY - 40}px)` }}>
+                    {isBelow && <div className="w-0.5 bg-[#3aafa9]" style={{ height: `${lineHeight}px`, marginBottom: "4px" }} />}
                     <div className="inline-block bg-[#3aafa9] text-white px-3 py-1 rounded-md shadow text-xs font-semibold whitespace-nowrap leading-none">
-                      {project.title}
+                      {project.title?.[lang] ?? project.title}
                     </div>
-
-                    {!isBelow && (
-                      <div
-                        className="w-0.5 bg-[#3aafa9] mt-1"
-                        style={{
-                          height: `${lineHeight}px`,
-                        }}
-                      />
-                    )}
+                    {!isBelow && <div className="w-0.5 bg-[#3aafa9] mt-1" style={{ height: `${lineHeight}px` }} />}
                   </div>
                 </OverlayView>
               </div>
             );
           })}
-
           {selectedProject && (
             <InfoWindow
               position={selectedProject.position}
               onCloseClick={() => {
                 setSelectedProject(null);
-                if (mapRef.current) {
-                  mapRef.current.panTo(originalCenter);
-                }
+                mapRef.current?.panTo(originalCenter);
               }}
             >
               <div className="w-[280px] h-[140px] pt-2 pb-3 px-3 bg-white rounded-lg shadow">
                 <div className="overflow-y-auto h-full pr-1">
                   <h2 className="text-sm font-semibold text-teal-700 mb-1">
-                    {selectedProject.title}
+                    {selectedProject.title?.[lang] ?? selectedProject.title}
                   </h2>
                   <p className="text-sm text-gray-700 whitespace-pre-line leading-snug">
-                    {selectedProject.description}
+                    {selectedProject.description?.[lang] ?? selectedProject.description}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
-                    წელი: {selectedProject.yearCompleted}
-                  </p>
+  {t("map.year")} {selectedProject.yearCompleted}
+</p>
                 </div>
               </div>
             </InfoWindow>

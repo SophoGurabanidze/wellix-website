@@ -1,59 +1,23 @@
-const timelineData = [
-  {
-    year: "2002",
-    title: " წინამორბედი კომპანიის დაფუძნება",
-    description: "მოხდა მანამდე არსებული კომპანიის ბაზაზე და გამოცდილებაზე ახალი კომპანიის ჩამოყალიბება",
-  },
-  {
-    year: "2007–2008",
-    title: "პირველი პროექტი ",
-    description: "საერთაშორისო კომპანიის დაკვეთით",
-  },
-  {
-    year: "2011–2012",
-    title: "პარტნიორობა გერმანულ კომპანიებთან",
-    description: "პირველი პროექტი გერმანელ ზედამხედველთან ერთად გერმანული საინსტალაციო მასალების გამოყენებით",
-  },
-  {
-    year: "2013–2018",
-    title: "წყალმომარაგება დაზარალებული მოსახლეობისთვის",
-    description: "კონფლიქტისპირა 44 სოფელში წყალმომარაგების სისტემების მოწყობა",
-  },
-  {
-    year: "2021",
-    title: "ველიქსის დაფუძნება",
-    description: "პირველად განვახორციელეთ შესყიდვები ჩვენი ორი ახალი სტრატეგიული პარტნიორისგან როგორც გერმანიაში, ისე თურქეთში. რამაც მნიშვნელოვნად გააუმჯობესა ჭაბურღილის საინსტალაციო მასალების ხარისხი",
-  },
-];
-
-const timelineDataSecondRow = [
-  {
-    year: "2022",
-    title: "თანამშრომლობის დასაწყისი კოკა-კოლა ბოთლერს ჯორჯიასთან",
-    description: "ჩვენს მიერ ჩვენს გერმანელ პარტნიორებთან ერთად კომპანია კოკა-კოლა ბოთლერს ჯორჯიასათვის სთვის დაიგეგმა და განხორციელდა ჭაბურღილის მშენებლობა-მოწყობის პროექტი. ეს პროექტი იყო ჩვენი და ჩვენი გერმანელი პარტნიორის  GWE-ს კიდევ ერთი ერთობლივი კოლაბორაცია, რომელმაც საშუალება მოგვცა შეგევეძინა კიდევ ერთი უმნიშვნელოვანესი რეფერენსკლიენტი",
-  },
-  {
-    year: "2024",
-    title: "თანამშრომლობის დასაწყისი კომპანია ნაბეღლავთან",
-    description:"გრძელვადიანი თანამშრომლობის კიდევ ერთი წარმატებული დასაწყისი. ჩოხატაურის მუნიციპალიტეტის სოფელ ნაბეღლავში 2 ერთეული პრემიუმ ხარისხის ჭაბურღილის მშენებლობა-მოწყობის პროექტი",
-  },
-  {
-    year: "2025",
-    title: "ჭაბურღილის-მოვლა პატრონობის სერვისი",
-    description: "ჩვენს ახალშეძენილ გერმანელ პარტნიორებთან ერთად დაიწყო მუშაობა ქართული რეალობისათვის ინოვაციური სერვისის, ჭაბურღილის მოვლა-პატრონობის, დანერგვაზე",
-  },
-];
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ShortHistory() {
+  const { t } = useTranslation();
+
+  const timeline = t("short_history.timeline", { returnObjects: true });
+
+  const firstRow = timeline.slice(0, 5);
+  const secondRow = timeline.slice(5);
+
   return (
     <div className="px-4 py-16 bg-gradient-to-b from-white to-blue-50">
-      <h2 className="text-4xl font-bold text-center mb-24  text-primaryBlue">
-        კომპანიის განვითარების ძირითადი ეტაპები
+      <h2 className="text-4xl font-bold text-center mb-24 text-primaryBlue">
+        {t("short_history.title")}
       </h2>
 
       {/* First row */}
       <div className="flex flex-col md:flex-row md:items-start md:justify-between relative mb-20">
-        {timelineData.map((item, index) => (
+        {firstRow.map((item, index) => (
           <div
             key={index}
             className="flex flex-col items-center md:w-1/5 text-center mb-10 md:mb-0"
@@ -70,7 +34,7 @@ export default function ShortHistory() {
 
       {/* Second row */}
       <div className="flex flex-col md:flex-row md:items-start md:justify-evenly relative">
-        {timelineDataSecondRow.map((item, index) => (
+        {secondRow.map((item, index) => (
           <div
             key={index}
             className="flex flex-col items-center md:w-1/4 text-center mb-10 md:mb-0"

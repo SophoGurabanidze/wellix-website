@@ -1,21 +1,25 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import image1 from "../assets/maintenance/maintenance-1.png";
 
 const Conservation = () => {
+  const { t } = useTranslation();
+
+  const section1 = t("conservation.section1", { returnObjects: true });
+  const section3 = t("conservation.section3", { returnObjects: true });
+
   return (
     <div className="bg-white py-16 px-4 md:px-12">
       <div className="max-w-6xl mx-auto space-y-24">
-      <h1 className="text-4xl text-center font-bold text-primaryBlue mb-12">
-          ჭაბურღილის კონსერვაცია
+        <h1 className="text-4xl text-center font-bold text-primaryBlue mb-12">
+          {t("conservation.title")}
         </h1>
+
         {/* Section 1 */}
         <section className="text-justify text-gray-800 leading-relaxed text-lg space-y-6">
-          <p>
-            ჩვენს პრაქტიკაში ხშირად გვხვდება შემთხვევები, როდესაც ჭაბურღილის არასწორი დაგეგმარებისა და მშენებლობის გამო, ან თუნდაც მისი არასწორი ექსპლოატაციის შედეგად ჭაბურღილი გარკვეული პერიოდის შემდეგ აღარ ექვემდებარება რეაბილიტაციას. შედეგად დღის წესრიგში დგება მისი კონსერვაციის საკითხი, რათა გრძელვადიან პერსპექტივაში საფრთხე არ შეექმნას მის გავლენის რადიუსში მყოფ სხვა ჭაბურღილებს და წყალშემკრებ არეალს.
-          </p>
-          <p>
-            საქართველოში ერთ-ერთ უმწვავეს პრობლემას წარმოადგენს ის უფუნქციო ჭაბურღილები, რომელთა დიდი ნაწილიც უბრალოდ მიტოვებული იქნა მისი მეპატრონეების მიერ ანდა არაჯეროვნად იქნა კონსერვირებული, რაც რათქმაუნდა ერთგვარ ღია ჭრილობას წარმოადგენს ჩვენი ქვეყნის მიწისქვეშა წყლის რესურსებისათვის.
-          </p>
+          {section1.map((p, idx) => (
+            <p key={idx}>{p}</p>
+          ))}
         </section>
 
         {/* Section 2 */}
@@ -28,20 +32,15 @@ const Conservation = () => {
             />
           </div>
           <div className="md:w-1/2 text-justify text-gray-800 leading-relaxed text-lg">
-            <p>
-              ჭაბურღილის კონსერვაცია მიზნად ისახავს ჭარბად დაზიანებული ჭაბურღილის უსაფრთხოდ და გრძელვადიანად დალუქვას ისე, რომ არ მოხდეს სხვა ჭაბურღილებზე ან მიწისქვეშა წყლების რეზერვუარზე უარყოფითი ზეგავლენა. 
-            </p>
+            <p>{t("conservation.section2")}</p>
           </div>
         </section>
 
         {/* Section 3 */}
         <section className="text-justify text-gray-800 leading-relaxed text-lg space-y-6">
-          <p>
-            ჩვენ, როგორც ჩვენი ქვეყნის წყლის რესურსების მდგრადი განვითარების დიდი გულშემატკივარი, გთავაზობთ დაგეგმვიდან განხორციელებამდე მხარდაჭერას ჭაბურღილების პროფესიონალურ კონსერვაციაში, რათა მათ სამომავლოდ არ დააბინძურონ წყალშემცველი ფენა. ჩვენ ყურადღებას ვაქცევთ გეოლოგიურ და ტექნიკურ ასპექტებს, რათა დაზიანებული ან/და უფუნქციო ჭაბურღილის კონსერვაცია განხორციელდეს ეფექტიანად და ეკოლოგიურად სუფთა გზით.
-          </p>
-          <p>
-            ჩვენი მიზანია ჭაბურღილის უსაფრთხოდ და სამუდამოდ კონსერვაციის გზით გრძელვადიან პერსპექტივაში მოხდეს მის გავლენის რადიუსში პოტენციური რისკების თავიდან აცილება.
-          </p>
+          {section3.map((p, idx) => (
+            <p key={idx}>{p}</p>
+          ))}
         </section>
       </div>
     </div>

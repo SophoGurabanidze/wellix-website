@@ -16,8 +16,8 @@ const EditProject = () => {
         if (!project) throw new Error("Not found");
 
         setForm({
-          title: project.title,
-          description: project.description,
+          title: project.title || { ka: "", en: "" },
+          description: project.description || { ka: "", en: "" },
           position: {
             lat: project.position.lat,
             lng: project.position.lng,
@@ -25,8 +25,6 @@ const EditProject = () => {
           yearCompleted: project.yearCompleted,
           labelOffsetX: project.labelOffsetX ?? 0,
           labelOffsetY: project.labelOffsetY ?? 0,
-
-
         });
       } catch (err) {
         setError(`Project not found or failed to load ${err}`);
@@ -44,6 +42,15 @@ const EditProject = () => {
         ...form,
         position: { ...form.position, [name]: value },
       });
+    } else if (name.startsWith("title.")) {
+      const lang = name.split(".")[1];
+      setForm({ ...form, title: { ...form.title, [lang]: value } });
+    } else if (name.startsWith("description.")) {
+      const lang = name.split(".")[1];
+      setForm({
+        ...form,
+        description: { ...form.description, [lang]: value },
+      });
     } else {
       setForm({ ...form, [name]: value });
     }
@@ -58,7 +65,6 @@ const EditProject = () => {
           lat: parseFloat(form.position.lat),
           lng: parseFloat(form.position.lng),
         },
-       
       };
 
       await API.put(`/api/completed-projects/${id}`, updated);
@@ -68,7 +74,8 @@ const EditProject = () => {
     }
   };
 
-  if (!form) return <div className="p-6">Loading...</div>;
+  if (!form)
+    return <div className="p-6">Loading...</div>;
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
@@ -76,22 +83,45 @@ const EditProject = () => {
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Title Georgian */}
         <input
           type="text"
-          name="title"
-          placeholder="Project Title"
+          name="title.ka"
+          placeholder="Project Title (Georgian)"
           className="w-full border p-2 rounded"
-          value={form.title}
+          value={form.title.ka}
           onChange={handleChange}
           required
         />
-        <textarea
-          name="description"
-          placeholder="Description"
+
+        {/* Title English */}
+        <input
+          type="text"
+          name="title.en"
+          placeholder="Project Title (English)"
           className="w-full border p-2 rounded"
-          value={form.description}
+          value={form.title.en}
           onChange={handleChange}
         />
+
+        {/* Description Georgian */}
+        <textarea
+          name="description.ka"
+          placeholder="Description (Georgian)"
+          className="w-full border p-2 rounded"
+          value={form.description.ka}
+          onChange={handleChange}
+        />
+
+        {/* Description English */}
+        <textarea
+          name="description.en"
+          placeholder="Description (English)"
+          className="w-full border p-2 rounded"
+          value={form.description.en}
+          onChange={handleChange}
+        />
+
         <div className="flex gap-4">
           <input
             type="number"
@@ -112,6 +142,7 @@ const EditProject = () => {
             required
           />
         </div>
+
         <input
           type="text"
           name="yearCompleted"
@@ -120,23 +151,24 @@ const EditProject = () => {
           value={form.yearCompleted}
           onChange={handleChange}
         />
-<input
-  type="number"
-  name="labelOffsetY"
-  placeholder="Label Offset Y (e.g. 0, 1, -1)"
-  className="w-full border p-2 rounded"
-  value={form.labelOffsetY}
-  onChange={handleChange}
-/>
 
-<input
-  type="number"
-  name="labelOffsetX"
-  placeholder="Label Offset X (e.g. -1, 0, 1)"
-  className="w-full border p-2 rounded"
-  value={form.labelOffsetX}
-  onChange={handleChange}
-/>
+        <input
+          type="number"
+          name="labelOffsetY"
+          placeholder="Label Offset Y (e.g. 0, 1, -1)"
+          className="w-full border p-2 rounded"
+          value={form.labelOffsetY}
+          onChange={handleChange}
+        />
+
+        <input
+          type="number"
+          name="labelOffsetX"
+          placeholder="Label Offset X (e.g. -1, 0, 1)"
+          className="w-full border p-2 rounded"
+          value={form.labelOffsetX}
+          onChange={handleChange}
+        />
 
         <button
           type="submit"

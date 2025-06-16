@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import wellixLogo from "../assets/wellix-logo.jpeg";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState(null);
+  const { t, i18n } = useTranslation();
+
   let dropdownTimeout;
 
   const handleMouseEnter = (menu) => {
@@ -28,9 +31,31 @@ const Navbar = () => {
     setMobileDropdown(mobileDropdown === menu ? null : menu);
   };
 
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "ka" : "en";
+    i18n.changeLanguage(newLang);
+    localStorage.setItem("language", newLang);
+  };
+
   return (
-    <nav className="bg-primary text-gray-300 p-4 shadow-md relative">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-primary text-gray-300 shadow-md relative">
+      {/* Language Switcher Bar */}
+      <div className="w-full h-8 bg-gradient-to-r from-[#003d73] via-[#005c8d] to-[#00a9e0] flex justify-end items-center px-4 text-[14px]">
+      <div className="text-[13px] leading-none">
+      <button
+  onClick={toggleLanguage}
+  className="flex items-center gap-[6px] bg-white/20 hover:bg-white/30 rounded-full text-white font-medium transition px-[10px] h-[28px] text-[13px] leading-none"
+>
+  <div className="w-[14px] h-[14px] bg-white rounded-full border border-gray-300" />
+  {i18n.language === "en" ? "ქარ" : "Eng"}
+</button>
+
+
+</div>
+</div>
+
+
+      <div className="container mx-auto flex justify-between items-center p-4">
         <Link to="/" className="text-2xl font-bold text-gray-100">
           <img
             src={wellixLogo}
@@ -65,21 +90,21 @@ const Navbar = () => {
               className="hover:underline decoration-sky-700 decoration-2 underline-offset-4"
               onClick={handleClick}
             >
-              ჩვენ შესახებ
+              {t("nav.about")}
             </Link>
             {activeDropdown === "about" && (
               <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-800 shadow-md w-72 border border-gray-200 rounded">
                 <li className="border-b border-gray-200">
-                  <Link to="/about/about-us" className="block px-4 py-2 hover:bg-gray-200">ჩვენ შესახებ</Link>
+                  <Link to="/about/about-us" className="block px-4 py-2 hover:bg-gray-200">{t("nav.about")}</Link>
                 </li>
                 <li className="border-b border-gray-200">
-                  <Link to="/about/short-history" className="block px-4 py-2 hover:bg-gray-200">მნიშვნელოვანი მოვლენები</Link>
+                  <Link to="/about/short-history" className="block px-4 py-2 hover:bg-gray-200">{t("nav.short_history")}</Link>
                 </li>
                 <li className="border-b border-gray-200">
-                  <Link to="/about/our-advantages" className="block px-4 py-2 hover:bg-gray-200">ჩვენი უპირატესობები</Link>
+                  <Link to="/about/our-advantages" className="block px-4 py-2 hover:bg-gray-200">{t("nav.advantages")}</Link>
                 </li>
                 <li className="last:border-b-0">
-                  <Link to="/about/reference-clients" className="block px-4 py-2 hover:bg-gray-200">პარტნიორები</Link>
+                  <Link to="/about/reference-clients" className="block px-4 py-2 hover:bg-gray-200">{t("nav.partners")}</Link>
                 </li>
               </ul>
             )}
@@ -96,18 +121,18 @@ const Navbar = () => {
               className="hover:underline decoration-sky-700 decoration-2 underline-offset-4"
               onClick={handleClick}
             >
-              მომსახურებები
+              {t("nav.services")}
             </Link>
             {activeDropdown === "services" && (
               <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-800 shadow-md w-72 border border-gray-200 rounded">
                 <li className="border-b border-gray-200">
-                  <Link to="building-new-wells" className="block px-4 py-2 hover:bg-gray-200">ჭაბურღილის მშენებლობა</Link>
+                  <Link to="building-new-wells" className="block px-4 py-2 hover:bg-gray-200">{t("nav.new_wells")}</Link>
                 </li>
                 <li className="border-b border-gray-200">
-                  <Link to="maintenance" className="block px-4 py-2 hover:bg-gray-200">ჭაბურღილის რეაბილიტაცია</Link>
+                  <Link to="maintenance" className="block px-4 py-2 hover:bg-gray-200">{t("nav.rehabilitation")}</Link>
                 </li>
                 <li className="last:border-b-0">
-                  <Link to="conservation" className="block px-4 py-2 hover:bg-gray-200">ჭაბურღილის კონსერვაცია</Link>
+                  <Link to="conservation" className="block px-4 py-2 hover:bg-gray-200">{t("nav.conservation")}</Link>
                 </li>
               </ul>
             )}
@@ -124,22 +149,22 @@ const Navbar = () => {
               className="hover:underline decoration-sky-700 decoration-2 underline-offset-4"
               onClick={handleClick}
             >
-              პროექტები
+              {t("nav.projects")}
             </Link>
             {activeDropdown === "projects" && (
               <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-800 shadow-md w-72 border border-gray-200 rounded">
                 <li className="last:border-b-0">
-                  <Link to="/projects/completed" className="block px-4 py-2 hover:bg-gray-200">გამორჩეული პროექტები</Link>
+                  <Link to="/projects/completed" className="block px-4 py-2 hover:bg-gray-200">{t("nav.featured")}</Link>
                 </li>
               </ul>
             )}
           </li>
 
           <li>
-            <Link to="/faq" className="hover:underline decoration-sky-700 decoration-2 underline-offset-4">FAQ</Link>
+            <Link to="/faq" className="hover:underline decoration-sky-700 decoration-2 underline-offset-4">{t("nav.faq")}</Link>
           </li>
           <li>
-            <Link to="/contact" className="hover:underline decoration-sky-700 decoration-2 underline-offset-4">კონტაქტი</Link>
+            <Link to="/contact" className="hover:underline decoration-sky-700 decoration-2 underline-offset-4">{t("nav.contact")}</Link>
           </li>
         </ul>
       </div>
@@ -148,39 +173,43 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <ul className="md:hidden flex flex-col bg-primary text-gray-300 p-4">
           <li className="flex justify-between items-center px-4 py-2 hover:bg-sky-800" onClick={() => toggleMobileDropdown("about")}>
-            <Link to="/about/about-us">ჩვენ შესახებ</Link> <ChevronDown />
+            <Link to="/about/about-us">{t("nav.about")}</Link> <ChevronDown />
           </li>
           {mobileDropdown === "about" && (
             <ul className="pl-6">
-              <li><Link to="/about/about-us" className="block py-2 hover:bg-sky-600">ჩვენ შესახებ</Link></li>
-              <li><Link to="/about/short-history" className="block py-2 hover:bg-sky-600">მნიშვნელოვანი მოვლენები</Link></li>
-              <li><Link to="/about/our-advantages" className="block py-2 hover:bg-sky-600">ჩვენი უპირატესობები</Link></li>
-              <li><Link to="/about/reference-clients" className="block py-2 hover:bg-sky-600">პარტნიორები</Link></li>
+              <li><Link to="/about/about-us" className="block py-2 hover:bg-sky-600">{t("nav.about")}</Link></li>
+              <li><Link to="/about/short-history" className="block py-2 hover:bg-sky-600">{t("nav.short_history")}</Link></li>
+              <li><Link to="/about/our-advantages" className="block py-2 hover:bg-sky-600">{t("nav.advantages")}</Link></li>
+              <li><Link to="/about/reference-clients" className="block py-2 hover:bg-sky-600">{t("nav.partners")}</Link></li>
             </ul>
           )}
+
           <li className="flex justify-between items-center px-4 py-2 hover:bg-sky-800" onClick={() => toggleMobileDropdown("services")}>
-            <Link to="/services">მომსახურებები</Link> <ChevronDown />
+            <Link to="/services">{t("nav.services")}</Link> <ChevronDown />
           </li>
           {mobileDropdown === "services" && (
             <ul className="pl-6">
-              <li><Link to="building-new-wells" className="block py-2 hover:bg-sky-600">ჭაბურღილის მშენებლობა</Link></li>
-              <li><Link to="maintenance" className="block py-2 hover:bg-sky-600">ჭაბურღილის რეაბილიტაცია</Link></li>
-              <li><Link to="conservation" className="block py-2 hover:bg-sky-600">ჭაბურღილის კონსერვაცია</Link></li>
+              <li><Link to="building-new-wells" className="block py-2 hover:bg-sky-600">{t("nav.new_wells")}</Link></li>
+              <li><Link to="maintenance" className="block py-2 hover:bg-sky-600">{t("nav.rehabilitation")}</Link></li>
+              <li><Link to="conservation" className="block py-2 hover:bg-sky-600">{t("nav.conservation")}</Link></li>
             </ul>
           )}
+
           <li className="flex justify-between items-center px-4 py-2 hover:bg-sky-800" onClick={() => toggleMobileDropdown("projects")}>
-            <Link to="/projects/completed">პროექტები</Link> <ChevronDown />
+            <Link to="/projects/completed">{t("nav.projects")}</Link> <ChevronDown />
           </li>
           {mobileDropdown === "projects" && (
             <ul className="pl-6">
-              <li><Link to="/projects/completed" className="block px-4 py-2 hover:bg-sky-600">გამორჩეული პროექტები</Link></li>
+              <li><Link to="/projects/completed" className="block px-4 py-2 hover:bg-sky-600">{t("nav.featured")}</Link></li>
             </ul>
           )}
-          <li><Link to="/faq" className="block px-4 py-2 hover:bg-sky-800">FAQ</Link></li>
-          <li><Link to="/contact" className="block px-4 py-2 hover:bg-sky-800">კონტაქტი</Link></li>
+
+          <li><Link to="/faq" className="block px-4 py-2 hover:bg-sky-800">{t("nav.faq")}</Link></li>
+          <li><Link to="/contact" className="block px-4 py-2 hover:bg-sky-800">{t("nav.contact")}</Link></li>
         </ul>
       )}
 
+      {/* Bottom Gradient Line */}
       <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#003d73] via-[#005c8d] to-[#00a9e0] animate-waterFlow"></div>
     </nav>
   );

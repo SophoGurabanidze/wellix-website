@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import advantages from '../data/advantages.json';
+import { useTranslation } from 'react-i18next';
 
 const containerVariants = {
   hidden: {},
@@ -17,8 +17,13 @@ const itemVariants = {
   show: { opacity: 1, transition: { duration: 0.6 } },
 };
 
+const bgClasses = ["bg-blue-900", "bg-sky-800", "bg-sky-600", "bg-cyan-600"];
+const alignClasses = ["sm:flex-row", "sm:flex-row-reverse"];
+
 export default function OurAdvantages() {
   const [openIndex, setOpenIndex] = useState(null);
+  const { t } = useTranslation();
+  const advantages = t("advantages.list", { returnObjects: true });
 
   const toggleIndex = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -28,7 +33,7 @@ export default function OurAdvantages() {
     <section className="bg-white py-16 px-4 sm:px-6 lg:px-20">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-primaryBlue mb-12">
-          რატომ უნდა აგვირჩიოთ ჩვენ
+          {t("advantages.heading")}
         </h2>
 
         <motion.div
@@ -46,12 +51,12 @@ export default function OurAdvantages() {
                 variants={itemVariants}
                 onClick={() => toggleIndex(i)}
                 className={`flex flex-col sm:flex-row ${
-                  adv.align === 'left' ? 'sm:flex-row' : 'sm:flex-row-reverse'
+                  i % 2 === 0 ? alignClasses[0] : alignClasses[1]
                 } bg-white shadow-lg rounded-xl overflow-hidden cursor-pointer transition hover:shadow-xl`}
               >
                 {/* Number Block */}
                 <div
-                  className={`flex justify-center items-center ${adv.bg} text-white text-3xl font-bold px-6 py-8 sm:w-28`}
+                  className={`flex justify-center items-center ${bgClasses[i % bgClasses.length]} text-white text-3xl font-bold px-6 py-8 sm:w-28`}
                 >
                   {adv.number}
                 </div>

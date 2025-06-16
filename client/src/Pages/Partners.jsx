@@ -1,18 +1,19 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import globeLeft from "../assets/globe-left.png";
 import globeRight from "../assets/globe-right.png";
 
-import vendor1 from "../assets/logos/Vendor1.png";
-import vendor2 from "../assets/logos/Vendor2.png";
-import vendor3 from "../assets/logos/Vendor3.png";
-import vendor4 from "../assets/logos/Vendor4.png";
-import vendor5 from "../assets/logos/Vendor5.png";
+import vendor1 from "../assets/partnerLogos/Vendor1.png";
+import vendor2 from "../assets/partnerLogos/Vendor2.png";
+import vendor3 from "../assets/partnerLogos/Vendor3.png";
+import vendor4 from "../assets/partnerLogos/Vendor4.png";
+import vendor5 from "../assets/partnerLogos/Vendor5.png";
 
-import client1 from "../assets/logos/client1.png";
-import client2 from "../assets/logos/client2.jpeg";
-import client3 from "../assets/logos/client3.png";
-import client4 from "../assets/logos/client4.jpeg";
-import client5 from "../assets/logos/client5.png";
+import client1 from "../assets/partnerLogos/client1.png";
+import client2 from "../assets/partnerLogos/client2.jpeg";
+import client3 from "../assets/partnerLogos/client3.png";
+import client4 from "../assets/partnerLogos/client4.jpeg";
+import client5 from "../assets/partnerLogos/client5.png";
 
 const clients = [
   { name: "Client 1", logo: client1 },
@@ -34,6 +35,7 @@ const Partners = () => {
   const [activeTab, setActiveTab] = useState("clients");
   const isClients = activeTab === "clients";
   const items = isClients ? clients : vendors;
+  const { t } = useTranslation();
 
   return (
     <div className="bg-white py-10 px-4 md:px-20">
@@ -45,7 +47,7 @@ const Partners = () => {
             isClients ? "bg-primaryBlue text-white" : "bg-gray-200 text-gray-700"
           }`}
         >
-          გამორჩეული კლიენტები
+          {t("partners.clients")}
         </button>
         <button
           onClick={() => setActiveTab("vendors")}
@@ -53,7 +55,7 @@ const Partners = () => {
             !isClients ? "bg-primaryBlue text-white" : "bg-gray-200 text-gray-700"
           }`}
         >
-          გამორჩეული მომწოდებლები
+          {t("partners.vendors")}
         </button>
       </div>
 

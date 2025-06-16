@@ -1,11 +1,14 @@
-// ===== frontend/pages/AdminEditBlog.jsx =====
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const AdminEditBlog = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ title: "", text: "", image: "" });
+  const [form, setForm] = useState({
+    title: { ka: "", en: "" },
+    text: { ka: "", en: "" },
+    image: ""
+  });
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -13,7 +16,11 @@ const AdminEditBlog = () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`);
         const data = await res.json();
-        setForm({ title: data.title, text: data.text, image: data.image });
+        setForm({
+          title: data.title || { ka: "", en: "" },
+          text: data.text || { ka: "", en: "" },
+          image: data.image || ""
+        });
       } catch (err) {
         alert(`Failed to load blog ${err}`);
       }
@@ -41,20 +48,37 @@ const AdminEditBlog = () => {
   return (
     <form onSubmit={handleSubmit} className="p-8 max-w-xl mx-auto space-y-4">
       <h2 className="text-2xl font-bold mb-4">Edit Blog</h2>
+
       <input
         type="text"
-        placeholder="Title"
-        value={form.title}
-        onChange={(e) => setForm({ ...form, title: e.target.value })}
+        placeholder="Title (KA)"
+        value={form.title.ka}
+        onChange={(e) => setForm({ ...form, title: { ...form.title, ka: e.target.value } })}
         className="w-full border p-2"
+      />
+      <input
+        type="text"
+        placeholder="Title (EN)"
+        value={form.title.en}
+        onChange={(e) => setForm({ ...form, title: { ...form.title, en: e.target.value } })}
+        className="w-full border p-2"
+      />
+
+      <textarea
+        placeholder="Text (KA)"
+        value={form.text.ka}
+        onChange={(e) => setForm({ ...form, text: { ...form.text, ka: e.target.value } })}
+        className="w-full border p-2"
+        rows={4}
       />
       <textarea
-        placeholder="Text"
-        value={form.text}
-        onChange={(e) => setForm({ ...form, text: e.target.value })}
+        placeholder="Text (EN)"
+        value={form.text.en}
+        onChange={(e) => setForm({ ...form, text: { ...form.text, en: e.target.value } })}
         className="w-full border p-2"
-        rows={6}
+        rows={4}
       />
+
       <input
         type="text"
         placeholder="Image URL"

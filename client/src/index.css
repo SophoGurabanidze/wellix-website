@@ -6,6 +6,10 @@ body.loading {
   overflow: hidden;
 }
 
+html.lang-en {
+  font-size: 1.05rem;
+}
+
 #root {
   visibility: hidden;
 }
@@ -125,3 +129,4 @@ body {
   white-space: nowrap;
   font-size: 0.95rem;
 }
+

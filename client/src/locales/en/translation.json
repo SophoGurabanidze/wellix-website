@@ -1,0 +1,368 @@
+{
+  "nav": {
+    "about": "About Us",
+    "short_history": "Important Events",
+    "advantages": "Our Advantages",
+    "partners": "Partners",
+    "services": "Services",
+    "new_wells": "Well Drilling",
+    "rehabilitation": "Well Rehabilitation",
+    "conservation": "Well Conservation",
+    "projects": "Projects",
+    "featured": "Featured Projects",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "home": {
+    "about_title": "About Us",
+    "about_description": "Established in 2021, Wellix set out with its German partners to play an active role in delivering premium well drilling services across Georgia...",
+    "about_read_more": "Read More",
+    "services_title": "Our Services",
+    "services_description": "We offer a wide range of water extraction services from new well construction to conservation of amortised ones.",
+    "services_button": "View Services",
+    "blog": "Blog",
+    "read_more": "Read More"
+  },
+  "footer": {
+    "company": "Wellix",
+    "motto": "Quality That Lasts",
+    "about": "About Us",
+    "short_history": "Company History",
+    "advantages": "Our Advantages",
+    "partners": "Partners",
+    "services": "Services",
+    "new_wells": "Well Drilling",
+    "rehabilitation": "Well Rehabilitation",
+    "conservation": "Well Conservation",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "form": "Contact Form",
+    "rights": "All rights reserved."
+  },
+  "company_today": {
+  "title": "About Us",
+  "timeline": [
+    "Wellix was founded in 2021 to contribute, together with its German partners, to the development of premium-quality well construction in Georgia. This primarily means establishing a new standard for well drilling and setup in the country—one that enables optimal, environmentally safe use of Georgia's underground water resources.",
+    "However, the activity of our team and its leading experts began much earlier. In 2002, the Gurabanidze brothers founded the company Imedi, continuing a family tradition in this field. As a result, some of our key specialists now have over 30 years of professional experience.",
+    "Together with its Georgian and international partners, Imedi has successfully implemented numerous projects aimed at improving Georgia’s water supply system. Since its founding, our team has completed around 150 successful projects and built over 200 fully operational wells across the country.",
+    "We are especially proud of organizing the construction of drinking water wells and supply systems in 44 conflict-affected villages throughout Georgia.",
+    "Today, Wellix is one of the leading companies in Georgia. Together with its German partners, it has implemented premium well construction projects for major clients such as Coca-Cola Bottlers Georgia – Mtis Water, Nabeghlavi – Tskali Margebeli, Redix – Kvareli Baga, and others."
+  ]
+},
+"short_history": {
+  "title": "Key Milestones in Company Development",
+  "timeline": [
+    {
+      "year": "2002",
+      "title": "Establishment of Predecessor Company",
+      "description": "A new company was established, building upon the foundation and experience of a prior enterprise."
+    },
+    {
+      "year": "2007–2008",
+      "title": "First Major Project",
+      "description": "Commissioned by an international company"
+    },
+    {
+      "year": "2011–2012",
+      "title": "Initiation of German Partnership",
+      "description": "First project conducted under the supervision of a German partner, using German-manufactured installation materials."
+    },
+    {
+      "year": "2013–2018",
+      "title": "Water Supply for Conflict-Affected Communities",
+      "description": "Implemented water supply systems in 44 villages affected by regional conflicts."
+    },
+    {
+      "year": "2021",
+      "title": "Establishment of Wellix",
+      "description": "Strategic procurement partnerships were formed with two new suppliers in Germany and Turkey, significantly enhancing the quality of installation materials."
+    },
+    {
+      "year": "2022",
+      "title": "Partnership with Coca-Cola Bottlers Georgia",
+      "description": "In collaboration with our German partners, we successfully planned and executed a well construction project for Coca-Cola Bottlers Georgia—marking another notable reference project with GWE."
+    },
+    {
+      "year": "2024",
+      "title": "Collaboration with Nabeghlavi",
+      "description": "Initiated a long-term partnership by constructing two premium wells in the village of Nabeghlavi, Chokhatauri Municipality."
+    },
+    {
+      "year": "2025",
+      "title": "Launch of Maintenance Services",
+      "description": "Introduced an innovative well maintenance service tailored to Georgian conditions, in cooperation with newly established German partnerships."
+    }
+  ]
+},
+"advantages": {
+  "heading": "Why Choose Us",
+  "list": [
+    {
+      "number": "01",
+      "title": "A Team of Experienced Professionals",
+      "description": "With nearly three decades of experience in enhancing Georgia’s water supply infrastructure, our team has successfully executed numerous impactful and forward-thinking projects adapted to the country's specific needs. Throughout this journey, we have collaborated with both local stakeholders and international experts, maintaining long-standing partnerships with leading German companies in the design and construction of wells."
+    },
+    {
+      "number": "02",
+      "title": "Extensive Selection of High-Quality Well Materials",
+      "description": "One of our core commitments is to ensure that clients are well-informed about the critical components of a well, enabling them to receive a durable, efficient, and high-performing solution. Variations in material quality have a direct impact on both water quality and the well’s long-term functionality. For years, we have sourced premium materials from trusted German and Turkish manufacturers. We consider it our duty to educate clients from the outset of our collaboration—sharing transparent, detailed information about product options—so they can make well-informed decisions aligned with their technical and operational needs."
+    },
+    {
+      "number": "03",
+      "title": "Commitment to Long-Term Partnerships",
+      "description": "We approach every client relationship as the beginning of a lasting partnership, seeing each client not merely as a customer but as a valued collaborator. In addition to delivering top-tier well construction services, we provide tailored maintenance programs. Given that every well is unique in its geological and operational context, we develop customized upkeep strategies. Leveraging leading European expertise—and in collaboration with our German partners—we are dedicated to promoting best practices in well maintenance across Georgia, helping extend well lifespan and ensure reliable performance over time."
+    },
+    {
+      "number": "04",
+      "title": "Environmentally Responsible Practices",
+      "description": "Our mission is to set the benchmark for sustainable well construction and maintenance in Georgia, enabling the responsible utilization of underground water resources while preserving the environment. We achieve this by using only the highest quality materials and strictly adhering to eco-conscious methods, thereby eliminating the risk of aquifer contamination or other ecological harm."
+    }
+  ]
+},
+
+  "partners": {
+    "clients": "Featured Clients",
+    "vendors": "Featured Vendors"
+  },
+  "buildingWells": {
+  "heading": "New Well Construction",
+  "offerTitle": "Preparation of Proposal for Potential Client",
+  "offerText": "It’s important for us that you quickly receive a structural design of the well, based on which one or more tailored commercial offers can be prepared according to your technical requirements. When preparing the offer, we clearly separate the cost of the work to be performed and the installation materials, so that the client can more easily select the technically and financially appropriate components.",
+  "stepsTitle": "Construction Stages of the Well",
+  "steps": [
+    {
+      "id": "I",
+      "title": "Determining Possible Water Yield and Selecting the Correct Drilling Point",
+      "content": "After hydrogeological and geophysical analysis, the most promising drilling location is determined"
+    },
+    {
+      "id": "II",
+      "title": "Mobilization and Well Construction",
+      "content": "Drilling is carried out according to the design diameter and project depth"
+    },
+    {
+      "id": "III",
+      "title": "Installation of Materials Inside the Well",
+      "content": "Preferably, logging is conducted before installation; alternatively, zones are defined from drilling logs"
+    },
+    {
+      "id": "IV",
+      "title": "Well Flushing",
+      "content": "Removal of clay residues from drilling to access the water-bearing layers"
+    },
+    {
+      "id": "V",
+      "title": "Well Testing and Pump Installation",
+      "content": ""
+    },
+    {
+      "id": "VI",
+      "title": "Construction of the Well Head and Sanitary Zone",
+      "content": ""
+    },
+    {
+      "id": "VII",
+      "title": "Bacteriological and Chemical Analysis of the Water",
+      "content": ""
+    },
+    {
+      "id": "VIII",
+      "title": "Project Completion and Handover",
+      "content": "Preparation of the well passport and explanation of proper usage to the client"
+    }
+  ]
+},
+
+  "maintenance": {
+    "title": "Well Maintenance and Regeneration",
+    "sections": [
+      {
+        "text": "Over time, substances in groundwater such as iron, manganese, calcium, magnesium, and organic matter can clog the well’s filters and surrounding gravel layer, impairing functionality. Regular inspection is essential to detect issues early and ensure efficient operation."
+      },
+      {
+        "text": "Our experienced team, in cooperation with our German partners, will develop a tailored maintenance plan for your well, including a regeneration schedule based on chemical composition and operating conditions."
+      },
+      {
+        "text": "Using advanced regeneration technologies and cleaning agents, we restore your well to its original performance parameters."
+      }
+    ],
+    "chartLabels": {
+      "1": "Requires hydromechanical restoration",
+      "2": "Requires chemical treatment",
+      "3": "Requires complete sanitization due to damage"
+    },
+    "footer": [
+      "Proper well maintenance involves continuous monitoring of initial parameters noted in the well’s passport. If necessary, video inspection and sampling are conducted to develop an appropriate regeneration strategy.",
+      "Our goal is to maximize the lifespan and operational efficiency of each well we build, ensuring reliable water supply and protecting Georgia's groundwater resources.",
+      "The cost of maintenance and regeneration is determined by a project that outlines the scope, sequence, and conditions of the required work.",
+      "Proactive maintenance helps detect problems early, reduces rehabilitation costs, extends the well’s service life, and preserves water quality over the years."
+    ],
+    "chartAxis": {
+      "label": "Operational Lifespan"
+    }
+  },
+  
+  "conservation": {
+    "title": "Well Conservation",
+    "section1": [
+      "In our practice, we often encounter wells that, due to poor planning, construction, or improper use, become non-rehabilitable after a certain time. In such cases, conservation becomes necessary to prevent long-term risks to nearby wells and aquifers.",
+      "One of the most pressing problems in Georgia is the existence of non-functional wells, many of which have been abandoned or improperly conserved, posing an open threat to the country’s groundwater resources."
+    ],
+    "section2": "Well conservation aims to securely and permanently seal severely damaged wells in a way that prevents any negative impact on other wells or underground water reservoirs.",
+    "section3": [
+      "As strong supporters of the sustainable development of Georgia’s water resources, we offer professional support for the planning and execution of proper well conservation to prevent contamination of the aquifer. We focus on both geological and technical factors to ensure an effective and eco-friendly approach.",
+      "Our goal is to eliminate potential long-term risks in the well’s influence radius by safely and permanently sealing the well."
+    ]
+  },
+  
+    "contact": {
+      "formTitle": "Send us your request",
+      "placeholders": {
+        "company": "Company name",
+        "name": "Full name",
+        "street": "Street address",
+        "zip": "ZIP code",
+        "city": "City",
+        "phone": "Phone",
+        "email": "Email",
+        "location": "Project location",
+        "depth": "Estimated well depth (meters)",
+        "usage": "Desired water volume (liters)",
+        "engineeringOffice": "Which office issued the report?",
+        "notes": "Additional information"
+      },
+      "purpose": {
+        "legend": "Purpose of the well:",
+        "options": ["Personal use", "Agriculture", "Production", "Other"]
+      },
+      "engineering": {
+        "legend": "Do you have a hydrogeological report?",
+        "yes": "Yes",
+        "no": "No"
+      },
+      "budget": {
+        "label": "Planned budget",
+        "amount": "Amount"
+      },
+      "submit": "Submit",
+      "success": "✅ Your message has been sent! Redirecting...",
+      "error": "❌ Something went wrong. Please try again.",
+      "companyInfo": {
+        "title": "Contact Information",
+        "company": "Wellix LLC",
+        "address": "30 Amirejibi St, Telavi, Georgia",
+        "email": "info@wellix.ge",
+        "phone": "+995 598 307 308"
+      }
+    },
+    "faq": {
+    "heading": "Frequently Asked Questions",
+    "questions":[
+  {
+    "id": "1",
+    "title": "Hydrogeological Report – The Importance of Proper Well Design",
+    "content": "The hydrogeological report is the first stage of a well project. It is prepared by a hydrogeologist based on existing reference materials (location, climate, geomorphology, hydrogeological maps, geological cross-sections, and data from nearby wells) and fieldwork conducted on-site (geophysical survey). Therefore, potential clients must first obtain a hydrogeological report, as it determines whether to proceed with or terminate the project."
+  },
+  {
+    "id": "2",
+    "title": "The Importance of the Hydrogeological Report for Potential Clients",
+    "content": "Drilling a well without a hydrogeological report is neither purposeful nor financially justified. The report is essential for potential clients to evaluate the approximate budget for construction and what they will receive in return for the investment. Sometimes, a negative conclusion is issued, which is still a valuable outcome—saving the client from unnecessary expenses. In such cases, the report recommends alternative water supply methods, such as using natural springs or surface water sources."
+  },
+  {
+    "id": "3",
+    "title": "The Importance of the Hydrogeological Report for Well Constructors",
+    "content": "Based on the hydrogeological report, the constructor learns the key parameters of the well:\n• Geological conditions (lithology of rock layers)\n• Well depth and construction (drilling and casing pipe/filter diameters)\n• Type of installation materials\n• Expected water yield\n• Static and dynamic water levels\n• Chemical composition, mineralization, etc.\n\nThis information enables the constructor to prepare the cost estimate for well construction and installation."
+  },
+  {
+    "id": "4",
+    "title": "Preparing a Commercial Offer for a Potential Client",
+    "content": "For us, as a well constructor, it is critical to first receive the well construction drawing and geological data (rock lithology). Based on this, we can prepare one or more tailored commercial offers for the client. When preparing the offer, we separate the cost of labor from the cost of installation materials, allowing the client to more easily select technically and financially appropriate materials."
+  },
+  {
+    "id": "5",
+    "title": "Well Construction Cost",
+    "content": "The cost of a well depends on the following factors:\n• The client’s technical assignment\n• Location and depth of drilling\n• Construction design and type/quality of materials\n• Geological conditions (rock lithology)\n• Volume of required test work\n• Intended purpose of water use\n\nCost estimation is the final stage of the design process, after the hydrogeological conditions, depth, and construction of the well are determined."
+  },
+  {
+    "id": "6",
+    "title": "Well Service Life",
+    "content": "The operational lifespan of a well depends on:\n\n• The chemical and gas composition of the water\n• Its corrosiveness toward metal and concrete\n• The proper selection of casing and structural materials\n• The client's adherence to operational recommendations stated in the well passport"
+  },
+  {
+    "id": "7",
+    "title": "Impact of Installation Material Quality on Final Well Cost",
+    "content": "Necessary installation materials include: casing pipes, filters, centralizers, piezometers, appropriately selected gravel, pump, control system, etc. Quality differences in these materials can significantly affect the total cost. Choosing low-cost, short-lifespan materials may result in poor water quality, reduced operational efficiency, and shorter service life. Poor materials inevitably lead to future additional costs, making an initially low price much more expensive in the long run."
+  },
+  {
+    "id": "8",
+    "title": "Well Passport",
+    "content": "After drilling, a well passport is issued that includes all technical data related to the well:\n• Location;\n• Drilling rig type and model;\n• Well structure (drilling, casing/filter diameters and intervals, pump model, capacity, and installation depth);\n• Aquifer characteristics (static and dynamic levels, yield, filtration coefficient, transmissivity, and radius of influence);\n• Recommendations (general and specific) for optimal operation.\n\nThe well passport is essential for proper operation and future rehabilitation, if needed."
+  },
+  {
+    "id": "9",
+    "title": "Importance of the Well Passport for Owners",
+    "content": "A well passport is vital for proper operation and future rehabilitation.\nOver time, sand may accumulate in the well, partially or fully clogging the filters.\nPreventive maintenance must be conducted regularly, which is not possible without the passport.\n\nEach well we construct is designed to serve its owner for decades if used properly.\nPersonnel may change or forget the original data, so having the passport is in the user's best interest."
+  },
+  {
+    "id": "10",
+    "title": "Well Warranty Period – What It Should Include",
+    "content": "The warranty period is defined by agreement between the two parties. It covers the repair or replacement of any defect identified during the warranty period, and rectification of any damages caused by substandard work. However, it does not cover natural occurrences—such as well silting—which are not the result of poor workmanship but require proper maintenance by the well owner."
+  },
+  {
+    "id": "11",
+    "title": "Closure/Conservation of Old or Abandoned Wells",
+    "content": "An unused well must be properly closed or conserved. If it discharges water naturally, it pollutes the environment. If the water level is negative, debris may fall in and contaminate the aquifer. For each case, a hydrogeologist must develop a conservation plan that eliminates any future environmental risks."
+  }
+]
+},
+"projects": {
+  "title": "Featured Projects"
+},
+"dashboard": {
+  "welcome": "Welcome, Admin",
+  "change_password": "Change Password",
+  "add_project": "+ Add Project",
+  "add_blog": "+ Add Blog",
+  "manage_blogs": "Manage Blogs",
+  "logout": "Logout",
+  "project_list": "Completed Projects",
+  "edit": "Edit",
+  "delete": "Delete",
+  "confirm_delete": "Are you sure you want to delete this project?",
+  "delete_error": "Failed to delete project",
+  "load_error": "Failed to load projects"
+},
+"map": {
+  "year": "Year:"
+},
+"services": {
+  "title": "Our Services",
+  "items": [
+    "Preparation of hydrogeological reports",
+    "Preparation of technical drawings based on requirements",
+    "Defining drilling methodology based on client needs",
+    "Well construction: diameter from 179 mm to 555 mm, depth from 20m to 350m",
+    "Pump installation with a capacity from 1.5 to 40 liters",
+    "Well rehabilitation – restoring, replacing the existing pump",
+    "Well conservation"
+  ]
+},
+"thank_you": {
+  "title": "Thank you!",
+  "message": "Your request has been received.\nWe will contact you within 1–2 business days.",
+  "back_home": "Return to homepage"
+}
+
+
+  
+  
+
+  
+
+
+
+
+
+
+
+}

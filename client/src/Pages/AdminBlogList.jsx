@@ -1,11 +1,12 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const AdminBlogList = () => {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState("");
   const token = localStorage.getItem("token");
+  const { i18n } = useTranslation();
 
   const fetchBlogs = async () => {
     try {
@@ -28,7 +29,7 @@ const AdminBlogList = () => {
       });
       fetchBlogs();
     } catch (err) {
-      alert(`Failed to load blogs ${err}`);
+      alert(`Failed to delete blog ${err}`);
     }
   };
 
@@ -41,27 +42,36 @@ const AdminBlogList = () => {
       <h1 className="text-2xl font-bold mb-6">Manage Blogs</h1>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {blogs.map((blog) => (
-          <div key={blog._id} className="bg-white p-4 rounded shadow">
-            <h2 className="text-lg font-semibold mb-1">{blog.title}</h2>
-            <p className="text-sm text-gray-600 mb-2 line-clamp-3">{blog.text}</p>
-            <img src={blog.image} alt={blog.title} className="h-48 w-full object-cover mb-4 rounded" />
-            <div className="flex justify-between items-center text-sm">
-              <Link
-                to={`/admin/blog/edit/${blog._id}`}
-                className="text-blue-600 hover:underline"
-              >
-                Edit
-              </Link>
-              <button
-                onClick={() => deleteBlog(blog._id)}
-                className="text-red-600 hover:underline"
-              >
-                Delete
-              </button>
+        {blogs.map((blog) => {
+          const title = blog.title?.[i18n.language] || blog.title?.ka || "Untitled";
+          const text = blog.text?.[i18n.language] || blog.text?.ka || "";
+
+          return (
+            <div key={blog._id} className="bg-white p-4 rounded shadow">
+              <h2 className="text-lg font-semibold mb-1">{title}</h2>
+              <p className="text-sm text-gray-600 mb-2 line-clamp-3">{text}</p>
+              <img
+                src={blog.image}
+                alt={title}
+                className="h-48 w-full object-cover mb-4 rounded"
+              />
+              <div className="flex justify-between items-center text-sm">
+                <Link
+                  to={`/admin/blog/edit/${blog._id}`}
+                  className="text-blue-600 hover:underline"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => deleteBlog(blog._id)}
+                  className="text-red-600 hover:underline"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

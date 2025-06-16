@@ -3,10 +3,11 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+
 import logo from "./assets/wellix-logo.jpeg";
 import globeLeft from "./assets/globe-left.png";
 import globeRight from "./assets/globe-right.png";
-
+import { useTranslation } from "react-i18next";
 
 import { useState,useEffect } from 'react';
 import Layout from "./components/Layout";
@@ -48,6 +49,12 @@ import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("lang-en", i18n.language === "en");
+  }, [i18n.language]);
+  
 
   useEffect(() => {
     document.body.classList.add("loading");
