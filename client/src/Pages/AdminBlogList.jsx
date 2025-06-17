@@ -1,46 +1,24 @@
-import { useEffect, useState } from "react";
+import { useBlogs, useDeleteBlog } from "../hooks/useBlogs";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const AdminBlogList = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [error, setError] = useState("");
-  const token = localStorage.getItem("token");
   const { i18n } = useTranslation();
+  const { data: blogs = [], isLoading, error } = useBlogs();
+  const { mutate: deleteBlog } = useDeleteBlog();
 
-  const fetchBlogs = async () => {
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs`);
-      const data = await res.json();
-      setBlogs(data);
-    } catch (err) {
-      setError(`Failed to load blogs ${err}`);
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this blog?")) {
+      deleteBlog(id);
     }
   };
 
-  const deleteBlog = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this blog?")) return;
-    try {
-      await fetch(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      fetchBlogs();
-    } catch (err) {
-      alert(`Failed to delete blog ${err}`);
-    }
-  };
-
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p className="text-red-500">Failed to load blogs</p>;
 
   return (
     <div className="p-8 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-6">Manage Blogs</h1>
-      {error && <p className="text-red-500 mb-4">{error}</p>}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {blogs.map((blog) => {
           const title = blog.title?.[i18n.language] || blog.title?.ka || "Untitled";
@@ -63,7 +41,7 @@ const AdminBlogList = () => {
                   Edit
                 </Link>
                 <button
-                  onClick={() => deleteBlog(blog._id)}
+                  onClick={() => handleDelete(blog._id)}
                   className="text-red-600 hover:underline"
                 >
                   Delete

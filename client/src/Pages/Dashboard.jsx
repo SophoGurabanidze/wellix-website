@@ -1,36 +1,19 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import API from "../api";
 import { useTranslation } from "react-i18next";
+import { useProjects, useDeleteProject } from "../hooks/useProjects";
 
 const Dashboard = () => {
-  const [projects, setProjects] = useState([]);
-  const [error, setError] = useState("");
   const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
-  const fetchProjects = async () => {
-    try {
-      const res = await API.get("/api/completed-projects");
-      setProjects(res.data);
-    } catch (err) {
-      setError(`${t("dashboard.load_error")} ${err}`);
+  const { data: projects = [], isLoading, error } = useProjects();
+  const { mutate: deleteProject } = useDeleteProject();
+
+  const handleDelete = (id) => {
+    if (window.confirm(t("dashboard.confirm_delete"))) {
+      deleteProject(id);
     }
   };
-
-  const deleteProject = async (id) => {
-    if (!window.confirm(t("dashboard.confirm_delete"))) return;
-
-    try {
-      await API.delete(`/api/completed-projects/${id}`);
-      fetchProjects();
-    } catch (err) {
-      alert(`${t("dashboard.delete_error")} ${err}`);
-    }
-  };
-
-  useEffect(() => {
-    fetchProjects();
-  }, []);
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -44,7 +27,6 @@ const Dashboard = () => {
           >
             {t("dashboard.change_password")}
           </Link>
-
           <Link
             to="/admin/projects/new"
             className="block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mb-4"
@@ -81,16 +63,19 @@ const Dashboard = () => {
       <div className="flex-1 p-8">
         <h1 className="text-2xl font-bold mb-6">{t("dashboard.project_list")}</h1>
 
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {isLoading && <p className="text-gray-600">{t("dashboard.loading")}</p>}
+        {error && (
+          <p className="text-red-500 mb-4">{t("dashboard.load_error")} {error.message}</p>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
             <div key={project._id} className="bg-white p-4 rounded shadow">
               <h2 className="text-lg font-semibold mb-1">
-                {project.title?.[i18n.language] || project.title?.ka}
+                {project.title?.[lang] || project.title?.ka}
               </h2>
               <p className="text-sm text-gray-600 mb-2">
-                {project.description?.[i18n.language] || project.description?.ka}
+                {project.description?.[lang] || project.description?.ka}
               </p>
               <p className="text-xs text-gray-500 mb-4">
                 Lat: {project.position.lat}, Lng: {project.position.lng}
@@ -103,7 +88,7 @@ const Dashboard = () => {
                   {t("dashboard.edit")}
                 </Link>
                 <button
-                  onClick={() => deleteProject(project._id)}
+                  onClick={() => handleDelete(project._id)}
                   className="text-red-600 hover:underline"
                 >
                   {t("dashboard.delete")}
@@ -118,3 +103,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

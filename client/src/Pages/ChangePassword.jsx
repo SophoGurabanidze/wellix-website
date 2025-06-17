@@ -1,78 +1,70 @@
-
 import { useState } from "react";
-import API from "../api";
+import { useChangePassword } from "../hooks/useChangePassword";
 
-const ChangePassword = () => {
-  const [form, setForm] = useState({
-    currentPassword: "",
-    newPassword: "",
-    confirmNewPassword: "",
-  });
-  const [message, setMessage] = useState("");
+export default function ChangePassword() {
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
-  const email = "admin@wellix.com";
+  const {
+    mutate: changePassword,
+    isLoading,
+    error,
+    reset,
+  } = useChangePassword();
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (form.newPassword !== form.confirmNewPassword) {
-      setMessage("New passwords do not match");
-      return;
-    }
-
-    try {
-      const res = await API.post("/auth/change-password", {
-        email,
-        currentPassword: form.currentPassword,
-        newPassword: form.newPassword,
-      });
-      setMessage(res.data.message);
-    } catch (err) {
-      setMessage(err.response?.data?.message || "Error changing password");
-    }
+    setSuccessMessage("");
+    changePassword(
+      { currentPassword, newPassword },
+      {
+        onSuccess: () => {
+          setSuccessMessage("Password changed successfully.");
+          setCurrentPassword("");
+          setNewPassword("");
+          reset(); // clear any previous error
+        },
+      }
+    );
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded shadow">
-      <h2 className="text-xl font-bold mb-4 text-center">Change Password</h2>
-      {message && <p className="text-center text-sm text-red-500 mb-4">{message}</p>}
-      <form onSubmit={handleSubmit}>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow rounded">
+      <h2 className="text-2xl font-semibold mb-4 text-center">Change Password</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="password"
-          name="currentPassword"
           placeholder="Current Password"
-          className="w-full p-2 border rounded mb-4"
-          onChange={handleChange}
+          value={currentPassword}
+          onChange={(e) => setCurrentPassword(e.target.value)}
+          className="w-full border p-2 rounded"
           required
         />
         <input
           type="password"
-          name="newPassword"
           placeholder="New Password"
-          className="w-full p-2 border rounded mb-4"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="confirmNewPassword"
-          placeholder="Confirm New Password"
-          className="w-full p-2 border rounded mb-6"
-          onChange={handleChange}
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+          className="w-full border p-2 rounded"
           required
         />
         <button
           type="submit"
-          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+          disabled={isLoading}
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
         >
-          Change Password
+          {isLoading ? "Changing..." : "Change Password"}
         </button>
+        {successMessage && (
+          <p className="text-green-600 text-sm text-center">{successMessage}</p>
+        )}
+        {error && (
+          <p className="text-red-600 text-sm text-center">
+            {error.response?.data?.message || "Password change failed"}
+          </p>
+        )}
       </form>
     </div>
   );
-};
-
-export default ChangePassword;
+}

@@ -1,49 +1,41 @@
-import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useBlog, useUpdateBlog } from "../hooks/useBlogs";
+import { useState, useEffect } from "react";
 
 const AdminEditBlog = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { data, isLoading, error } = useBlog(id);
+  const { mutate: updateBlog, isPending } = useUpdateBlog();
   const [form, setForm] = useState({
     title: { ka: "", en: "" },
     text: { ka: "", en: "" },
-    image: ""
+    image: "",
   });
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`);
-        const data = await res.json();
-        setForm({
-          title: data.title || { ka: "", en: "" },
-          text: data.text || { ka: "", en: "" },
-          image: data.image || ""
-        });
-      } catch (err) {
-        alert(`Failed to load blog ${err}`);
-      }
-    };
-    fetchBlog();
-  }, [id]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await fetch(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(form),
+    if (data) {
+      setForm({
+        title: data.title || { ka: "", en: "" },
+        text: data.text || { ka: "", en: "" },
+        image: data.image || "",
       });
-      navigate("/admin/blogs");
-    } catch {
-      alert("Failed to update blog");
     }
+  }, [data]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateBlog(
+      { id, updated: form },
+      {
+        onSuccess: () => navigate("/admin/blogs"),
+        onError: () => alert("Failed to update blog"),
+      }
+    );
   };
+
+  if (isLoading) return <p className="p-6">Loading...</p>;
+  if (error) return <p className="text-red-500 p-6">Failed to load blog</p>;
 
   return (
     <form onSubmit={handleSubmit} className="p-8 max-w-xl mx-auto space-y-4">
@@ -86,8 +78,13 @@ const AdminEditBlog = () => {
         onChange={(e) => setForm({ ...form, image: e.target.value })}
         className="w-full border p-2"
       />
-      <button type="submit" className="bg-green-600 text-white px-6 py-2 rounded">
-        Save Changes
+
+      <button
+        type="submit"
+        className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+        disabled={isPending}
+      >
+        {isPending ? "Saving..." : "Save Changes"}
       </button>
     </form>
   );

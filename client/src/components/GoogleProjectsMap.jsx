@@ -1,17 +1,15 @@
 import { GoogleMap, Marker, InfoWindow, OverlayView } from '@react-google-maps/api';
-import { useEffect, useMemo, useState, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import API from '../api';
+import { useProjects } from "../hooks/useProjects";
 
 const center = { lat: 42.3154, lng: 43.3569 };
+
 const mapOptions = {
   styles: [
     { featureType: "all", elementType: "geometry", stylers: [{ color: "#e3e8f4" }] },
     { featureType: "water", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
-    {
-      featureType: "administrative.country", elementType: "geometry.stroke",
-      stylers: [{ color: "#ffffff" }, { weight: 3 }, { visibility: "on" }]
-    },
+    { featureType: "administrative.country", elementType: "geometry.stroke", stylers: [{ color: "#ffffff" }, { weight: 3 }, { visibility: "on" }] },
     { featureType: "road", stylers: [{ visibility: "off" }] },
     { featureType: "poi", stylers: [{ visibility: "off" }] },
     { featureType: "transit", stylers: [{ visibility: "off" }] },
@@ -25,33 +23,22 @@ const mapOptions = {
 };
 
 export default function GoogleProjectsMap() {
-  const [projects, setProjects] = useState([]);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const mapRef = useRef(null);
-  const originalCenter = useMemo(() => center, []);
-  const [zoom, setZoom] = useState(7);
-  const { i18n,t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = i18n.language;
 
-  useEffect(() => {
-    const updateZoom = () => {
-      setZoom(window.innerWidth < 640 ? 6 : 7);
-    };
-    updateZoom();
-    window.addEventListener('resize', updateZoom);
-    return () => window.removeEventListener('resize', updateZoom);
-  }, []);
+  const mapRef = useRef(null);
+  const originalCenter = useMemo(() => center, []);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [zoom, setZoom] = useState(7);
+
+  // ✅ React Query fetch
+  const { data: projects = [], isLoading, error } = useProjects();
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const res = await API.get('/api/completed-projects');
-        setProjects(res.data);
-      } catch (err) {
-        console.error('Failed to fetch projects:', err);
-      }
-    };
-    fetchProjects();
+    const updateZoom = () => setZoom(window.innerWidth < 640 ? 6 : 7);
+    updateZoom();
+    window.addEventListener("resize", updateZoom);
+    return () => window.removeEventListener("resize", updateZoom);
   }, []);
 
   const customIcon = useMemo(() => ({
@@ -69,6 +56,9 @@ export default function GoogleProjectsMap() {
     const offsetLat = window.innerWidth < 640 ? project.position.lat + 0.1 : project.position.lat + 0.25;
     mapRef.current?.panTo({ lat: offsetLat, lng: project.position.lng });
   };
+
+  if (isLoading) return <p className="text-2xl text-center  text-primaryBlue  mt-4">{t("loading")}</p>;
+  if (error) return <p className="text-center mt-4 text-red-600">{t("error.loading_projects")}</p>;
 
   return (
     <div className="relative w-full h-[500px]">
@@ -127,8 +117,8 @@ export default function GoogleProjectsMap() {
                     {selectedProject.description?.[lang] ?? selectedProject.description}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
-  {t("map.year")} {selectedProject.yearCompleted}
-</p>
+                    {t("map.year")} {selectedProject.yearCompleted}
+                  </p>
                 </div>
               </div>
             </InfoWindow>

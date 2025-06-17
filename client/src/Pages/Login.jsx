@@ -1,60 +1,58 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api";
+import { useLogin } from "../hooks/useLogin";
 
 export default function Login() {
-  const [form, setForm] = useState({ email: "", password: "" });
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { mutate: login, isLoading, error } = useLogin();
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await API.post("/api/auth/login", form);
-      localStorage.setItem("token", res.data.token);
-      navigate("/admin/dashboard");
-    } catch (err) {
-      setError(`Invalid credentials:${err}`);
-    }
+    login(
+      { email, password },
+      {
+        onSuccess: (data) => {
+          localStorage.setItem("token", data.token);
+          navigate("/admin/dashboard");
+        },
+      }
+    );
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded shadow-md w-full max-w-sm"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center">Admin Login</h2>
-        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+    <div className="max-w-sm mx-auto mt-12 p-6 bg-white shadow rounded">
+      <h2 className="text-2xl font-bold mb-4 text-center">Admin Login</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="email"
-          name="email"
+          value={email}
           placeholder="Email"
-          className="w-full p-2 border mb-4 rounded"
-          value={form.email}
-          onChange={handleChange}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full border p-2 rounded"
           required
         />
         <input
           type="password"
-          name="password"
+          value={password}
           placeholder="Password"
-          className="w-full p-2 border mb-6 rounded"
-          value={form.password}
-          onChange={handleChange}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full border p-2 rounded"
           required
         />
         <button
           type="submit"
+          disabled={isLoading}
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
         >
-          Login
+          {isLoading ? "Logging in..." : "Login"}
         </button>
+        {error && (
+          <p className="text-red-600 text-sm text-center mt-2">
+            {error.response?.data?.message || "Login failed"}
+          </p>
+        )}
       </form>
     </div>
   );

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api";
 import { useTranslation } from "react-i18next";
+import { useAddProject } from "../hooks/useProjects";
 
 const AddProject = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     title: { ka: "", en: "" },
     description: { ka: "", en: "" },
@@ -13,8 +15,9 @@ const AddProject = () => {
     labelOffsetY: 0,
     labelOffsetX: 0,
   });
+
+  const { mutate: addProject, isPending } = useAddProject();
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,23 +44,21 @@ const AddProject = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const newProject = {
-        ...form,
-        position: {
-          lat: parseFloat(form.position.lat),
-          lng: parseFloat(form.position.lng),
-        },
-      };
+    const newProject = {
+      ...form,
+      position: {
+        lat: parseFloat(form.position.lat),
+        lng: parseFloat(form.position.lng),
+      },
+    };
 
-      await API.post("api/completed-projects", newProject);
-      navigate("/admin/dashboard");
-    } catch (err) {
-      setError(`Failed to create project${err}`);
-    }
+    addProject(newProject, {
+      onSuccess: () => navigate("/admin/dashboard"),
+      onError: (err) => setError(`Failed to create project: ${err.message}`),
+    });
   };
 
   return (
@@ -136,7 +137,6 @@ const AddProject = () => {
           value={form.labelOffsetY}
           onChange={handleChange}
         />
-
         <input
           type="number"
           name="labelOffsetX"
@@ -149,8 +149,9 @@ const AddProject = () => {
         <button
           type="submit"
           className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+          disabled={isPending}
         >
-          {t("dashboard.submit")}
+          {isPending ? t("dashboard.submitting") : t("dashboard.submit")}
         </button>
       </form>
     </div>

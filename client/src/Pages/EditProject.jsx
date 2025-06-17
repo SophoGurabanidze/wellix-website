@@ -1,89 +1,78 @@
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import API from "../api";
+import { useProject, useUpdateProject } from "../hooks/useProjects";
 
 const EditProject = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const { data, isLoading, error } = useProject(id);
+  const { mutate: updateProject, isPending } = useUpdateProject();
+
   const [form, setForm] = useState(null);
-  const [error, setError] = useState("");
+  const [formError, setFormError] = useState("");
 
   useEffect(() => {
-    const fetchProject = async () => {
-      try {
-        const res = await API.get(`/api/completed-projects`);
-        const project = res.data.find((p) => p._id === id);
-        if (!project) throw new Error("Not found");
-
-        setForm({
-          title: project.title || { ka: "", en: "" },
-          description: project.description || { ka: "", en: "" },
-          position: {
-            lat: project.position.lat,
-            lng: project.position.lng,
-          },
-          yearCompleted: project.yearCompleted,
-          labelOffsetX: project.labelOffsetX ?? 0,
-          labelOffsetY: project.labelOffsetY ?? 0,
-        });
-      } catch (err) {
-        setError(`Project not found or failed to load ${err}`);
-      }
-    };
-
-    fetchProject();
-  }, [id]);
+    if (data) {
+      setForm({
+        title: data.title || { ka: "", en: "" },
+        description: data.description || { ka: "", en: "" },
+        position: {
+          lat: data.position.lat,
+          lng: data.position.lng,
+        },
+        yearCompleted: data.yearCompleted || "",
+        labelOffsetX: data.labelOffsetX ?? 0,
+        labelOffsetY: data.labelOffsetY ?? 0,
+      });
+    }
+  }, [data]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     if (name === "lat" || name === "lng") {
-      setForm({
-        ...form,
-        position: { ...form.position, [name]: value },
-      });
+      setForm({ ...form, position: { ...form.position, [name]: value } });
     } else if (name.startsWith("title.")) {
       const lang = name.split(".")[1];
       setForm({ ...form, title: { ...form.title, [lang]: value } });
     } else if (name.startsWith("description.")) {
       const lang = name.split(".")[1];
-      setForm({
-        ...form,
-        description: { ...form.description, [lang]: value },
-      });
+      setForm({ ...form, description: { ...form.description, [lang]: value } });
     } else {
       setForm({ ...form, [name]: value });
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const updated = {
-        ...form,
-        position: {
-          lat: parseFloat(form.position.lat),
-          lng: parseFloat(form.position.lng),
-        },
-      };
 
-      await API.put(`/api/completed-projects/${id}`, updated);
-      navigate("/admin/dashboard");
-    } catch (err) {
-      setError(`Project not found or failed to load ${err}`);
-    }
+    const updated = {
+      ...form,
+      position: {
+        lat: parseFloat(form.position.lat),
+        lng: parseFloat(form.position.lng),
+      },
+    };
+
+    updateProject(
+      { id, updated },
+      {
+        onSuccess: () => navigate("/admin/dashboard"),
+        onError: (err) => setFormError(`Failed to update project: ${err.message}`),
+      }
+    );
   };
 
-  if (!form)
-    return <div className="p-6">Loading...</div>;
+  if (isLoading || !form) return <p className="p-6">Loading...</p>;
+  if (error) return <p className="p-6 text-red-500">Failed to load project</p>;
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
       <h1 className="text-xl font-bold mb-4">Edit Project</h1>
-      {error && <p className="text-red-500 mb-4">{error}</p>}
+      {formError && <p className="text-red-500 mb-4">{formError}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Title Georgian */}
         <input
           type="text"
           name="title.ka"
@@ -94,7 +83,6 @@ const EditProject = () => {
           required
         />
 
-        {/* Title English */}
         <input
           type="text"
           name="title.en"
@@ -104,7 +92,6 @@ const EditProject = () => {
           onChange={handleChange}
         />
 
-        {/* Description Georgian */}
         <textarea
           name="description.ka"
           placeholder="Description (Georgian)"
@@ -113,7 +100,6 @@ const EditProject = () => {
           onChange={handleChange}
         />
 
-        {/* Description English */}
         <textarea
           name="description.en"
           placeholder="Description (English)"
@@ -173,8 +159,9 @@ const EditProject = () => {
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          disabled={isPending}
         >
-          Update
+          {isPending ? "Saving..." : "Update"}
         </button>
       </form>
     </div>

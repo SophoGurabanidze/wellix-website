@@ -40,19 +40,21 @@ const Navbar = () => {
   return (
     <nav className="bg-primary text-gray-300 shadow-md relative">
       {/* Language Switcher Bar */}
-      <div className="w-full h-8 bg-gradient-to-r from-[#003d73] via-[#005c8d] to-[#00a9e0] flex justify-end items-center px-4 text-[14px]">
-      <div className="text-[13px] leading-none">
-      <button
-  onClick={toggleLanguage}
-  className="flex items-center gap-[6px] bg-white/20 hover:bg-white/30 rounded-full text-white font-medium transition px-[10px] h-[28px] text-[13px] leading-none"
->
-  <div className="w-[14px] h-[14px] bg-white rounded-full border border-gray-300" />
-  {i18n.language === "en" ? "ქარ" : "Eng"}
-</button>
-
-
+      <div className="w-full h-12 bg-gradient-to-r from-[#003d73] via-[#005c8d] to-[#00a9e0] flex justify-end items-center px-4 text-[14px]">
+  {/* <div className="my-2 italic text-white font-semibold text-center text-[15px] md:text-[20px] flex-1">
+    {i18n.language === "en" ? "Quality That Lasts" : "დროში გამოცდილი ხარისხი"}
+  </div> */}
+  <div>
+    <button
+      onClick={toggleLanguage}
+      className="flex items-center gap-[6px] bg-white/20 hover:bg-white/30 rounded-full text-white font-medium transition px-[10px] h-[28px] text-[13px] leading-none"
+    >
+      <div className="w-[14px] h-[14px] bg-white rounded-full border border-gray-300" />
+      {i18n.language === "en" ? "ქარ" : "Eng"}
+    </button>
+  </div>
 </div>
-</div>
+
 
 
       <div className="container mx-auto flex justify-between items-center p-4">
