@@ -3,14 +3,39 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import slider1 from "../assets/images/Slider1.jpeg";
 import { useBlogs } from "../hooks/useBlogs";
+import usePageSEO from "../hooks/usePageSEO";
+// import { Helmet } from "react-helmet-async";
 
 const images = [slider1];
 
 const Home = () => {
   const { t, i18n } = useTranslation();
+
+
+
+  
   const { data: blogPosts = [], isLoading } = useBlogs();
   const [currentBlog, setCurrentBlog] = useState(0);
+ 
 
+  const seo = {
+    en: {
+      title: "Wellix | Water Well Drilling in Georgia",
+      description:
+        "Wellix offers professional water well drilling, rehabilitation, and conservation services across Georgia with German expertise.",
+    },
+    ka: {
+      title: "ველიქსი | ჭაბურღილის ბურღვა საქართველოში",
+      description:
+        "ველიქსი გთავაზობთ ჭაბურღილის გაბურღვას, რეაბილიტაციას და კონსერვაციას გერმანულ ტექნოლოგიებზე დაყრდნობით  საქართველოს მთელ ტერიტორიაზე.",
+    },
+  };
+
+  usePageSEO(seo);
+
+  useEffect(() => {
+    console.log("Language changed:", i18n.language);
+  }, [i18n.language]);
   useEffect(() => {
     if (blogPosts.length === 0) return;
 
@@ -22,7 +47,15 @@ const Home = () => {
   }, [blogPosts.length]);
 
   return (
+    <>
+     {/* <Helmet key={i18n.language}>
+  <title>{seo[i18n.language].title}</title>
+  <meta name="description" content={seo[i18n.language].description} />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Wellix" />
+</Helmet> */}
     <div className="flex flex-col gap-16">
+  
       {/* Hero Section */}
       <div className="relative w-full h-[500px] overflow-hidden">
         {images.map((img, index) => (
@@ -48,7 +81,7 @@ const Home = () => {
       <section className="w-full bg-gray-100 px-4 sm:px-8 lg:px-16">
         <h2 className="text-3xl font-bold text-center mb-8 text-primaryBlue">{t("home.blog")}</h2>
         {isLoading ? (
-          <p className="text-center">Loading blogs...</p>
+       <p className="text-center">{t("loadingBlogs")}</p>
         ) : (
           <div className="relative w-full overflow-hidden">
             <div
@@ -94,6 +127,7 @@ const Home = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

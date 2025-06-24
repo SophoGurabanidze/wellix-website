@@ -18,7 +18,7 @@
     "about_description": "Established in 2021, Wellix set out with its German partners to play an active role in delivering premium well drilling services across Georgia...",
     "about_read_more": "Read More",
     "services_title": "Our Services",
-    "services_description": "We offer a wide range of water extraction services from new well construction to conservation of amortised ones.",
+    "services_description": "We offer a wide range of groundwater extraction services...",
     "services_button": "View Services",
     "blog": "Blog",
     "read_more": "Read More"
@@ -208,7 +208,7 @@
       "In our practice, we often encounter wells that, due to poor planning, construction, or improper use, become non-rehabilitable after a certain time. In such cases, conservation becomes necessary to prevent long-term risks to nearby wells and aquifers.",
       "One of the most pressing problems in Georgia is the existence of non-functional wells, many of which have been abandoned or improperly conserved, posing an open threat to the country’s groundwater resources."
     ],
-    "section2": "Well conservation aims to securely and permanently seal severely damaged wells in a way that prevents any negative impact on other wells or underground water reservoirs.",
+    "section2": "A damaged borehole that is no longer suitable for rehabilitation needs to be safely and permanently sealed in such a way that it can no longer have a negative impact on nearby boreholes or the surrounding groundwater reservoir system.",
     "section3": [
       "As strong supporters of the sustainable development of Georgia’s water resources, we offer professional support for the planning and execution of proper well conservation to prevent contamination of the aquifer. We focus on both geological and technical factors to ensure an effective and eco-friendly approach.",
       "Our goal is to eliminate potential long-term risks in the well’s influence radius by safely and permanently sealing the well."
@@ -360,7 +360,11 @@
   "loading": "Loading...",
   "error": {
     "loading_projects": "Failed to load projects."
-  }
+  },
+  
+    "loadingBlogs": "Loading blogs..."
+  
+  
 
 
 

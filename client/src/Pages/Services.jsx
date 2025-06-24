@@ -1,5 +1,18 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import usePageSEO from "../hooks/usePageSEO";
+
+const seo = {
+  ka: {
+    title: "სერვისები | ჭაბურღილების გაბურღვა, რეაბილიტაცია და კონსერვაცია",
+    description: "გაიგეთ მეტი ველიქსის სერვისების შესახებ — წყლის ჭაბურღილების გაბურღვა, არსებული ჭაბურღილების რეაბილიტაცია/აღდგენა დაზიანებული ჭაბურღილის კონსერვაცია/ლიკვიდაცია/გაუქმება და ჭაბურღილის პროექტირება/დათვალიერება/ინსპექტირება.",
+  },
+  en: {
+    title: "Services | Well Drilling, Rehabilitation, and Conservation",
+    description: "Learn more about Wellix's services — water well drilling, rehabilitation/restoration of existing wells, conservation/decommissioning/elimination of damaged wells, and well design/inspection/evaluation.",
+  },
+};
+
 
 const Services = () => {
   const { t } = useTranslation();
@@ -7,6 +20,7 @@ const Services = () => {
   const verticalOffset = 260;
 
   const services = t("services.items", { returnObjects: true });
+  usePageSEO(seo);
 
   return (
     <div className="relative min-h-screen bg-white pl-6 sm:pl-24 pt-28 pb-20">

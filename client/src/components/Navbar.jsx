@@ -38,12 +38,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-primary text-gray-300 shadow-md relative">
+    <nav className="bg-primary text-gray-500  text-md font-bold shadow-md relative">
       {/* Language Switcher Bar */}
       <div className="w-full h-12 bg-gradient-to-r from-[#003d73] via-[#005c8d] to-[#00a9e0] flex justify-end items-center px-4 text-[14px]">
-  {/* <div className="my-2 italic text-white font-semibold text-center text-[15px] md:text-[20px] flex-1">
-    {i18n.language === "en" ? "Quality That Lasts" : "დროში გამოცდილი ხარისხი"}
-  </div> */}
+
   <div>
     <button
       onClick={toggleLanguage}
@@ -57,7 +55,7 @@ const Navbar = () => {
 
 
 
-      <div className="container mx-auto flex justify-between items-center p-4">
+      <div className="text-gray-700 container mx-auto flex justify-between items-center p-4">
         <Link to="/" className="text-2xl font-bold text-gray-100">
           <img
             src={wellixLogo}
@@ -80,7 +78,7 @@ const Navbar = () => {
         </button>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-6 h-[6.5rem] mt-[1rem]">
+        <ul className="text-gray-500  text-lg hidden md:flex items-center space-x-6 h-[6.5rem] mt-[1rem]">
           {/* About */}
           <li
             className="relative group"
@@ -89,13 +87,13 @@ const Navbar = () => {
           >
             <Link
               to="/about/about-us"
-              className="hover:underline decoration-sky-700 decoration-2 underline-offset-4"
+              className=" text-gray-500! hover:underline decoration-sky-700 decoration-2 underline-offset-4"
               onClick={handleClick}
             >
               {t("nav.about")}
             </Link>
             {activeDropdown === "about" && (
-              <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-800 shadow-md w-72 border border-gray-200 rounded">
+              <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-400 shadow-md w-72 border border-gray-200 rounded">
                 <li className="border-b border-gray-200">
                   <Link to="/about/about-us" className="block px-4 py-2 hover:bg-gray-200">{t("nav.about")}</Link>
                 </li>
@@ -126,7 +124,7 @@ const Navbar = () => {
               {t("nav.services")}
             </Link>
             {activeDropdown === "services" && (
-              <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-800 shadow-md w-72 border border-gray-200 rounded">
+              <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-400 shadow-md w-72 border border-gray-200 rounded">
                 <li className="border-b border-gray-200">
                   <Link to="building-new-wells" className="block px-4 py-2 hover:bg-gray-200">{t("nav.new_wells")}</Link>
                 </li>
@@ -154,7 +152,7 @@ const Navbar = () => {
               {t("nav.projects")}
             </Link>
             {activeDropdown === "projects" && (
-              <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-800 shadow-md w-72 border border-gray-200 rounded">
+              <ul className="absolute z-10 left-0 mt-2 bg-white text-gray-400 shadow-md w-72 border border-gray-200 rounded">
                 <li className="last:border-b-0">
                   <Link to="/projects/completed" className="block px-4 py-2 hover:bg-gray-200">{t("nav.featured")}</Link>
                 </li>
@@ -173,7 +171,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <ul className="md:hidden flex flex-col bg-primary text-gray-300 p-4">
+        <ul className="md:hidden flex flex-col bg-primary text-gray-500 p-4">
           <li className="flex justify-between items-center px-4 py-2 hover:bg-sky-800" onClick={() => toggleMobileDropdown("about")}>
             <Link to="/about/about-us">{t("nav.about")}</Link> <ChevronDown />
           </li>

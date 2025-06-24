@@ -31,7 +31,7 @@ export default function GoogleProjectsMap() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [zoom, setZoom] = useState(7);
 
-  // ✅ React Query fetch
+  //  React Query fetch
   const { data: projects = [], isLoading, error } = useProjects();
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function GoogleProjectsMap() {
 
   const handleMarkerClick = (project) => {
     setSelectedProject(project);
-    const offsetLat = window.innerWidth < 640 ? project.position.lat + 0.1 : project.position.lat + 0.25;
+    const offsetLat = window.innerWidth < 640 ? project.position.lat + 0.18 : project.position.lat + 0.25;
     mapRef.current?.panTo({ lat: offsetLat, lng: project.position.lng });
   };
 
@@ -62,7 +62,7 @@ export default function GoogleProjectsMap() {
 
   return (
     <div className="relative w-full h-[500px]">
-      <div className="absolute top-0 left-0 w-full h-20 bg-white z-10" />
+      <div className="absolute top-0 left-0 w-full h-22 bg-white z-10" />
       <div className="absolute bottom-0 left-0 w-full h-20 bg-white z-10" />
       <div className="absolute inset-0 z-0">
         <GoogleMap

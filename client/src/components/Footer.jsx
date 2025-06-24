@@ -41,7 +41,7 @@ const Footer = () => {
             <li><Link to="/faq" className="hover:text-white">{t("nav.faq")}</Link></li>
             <li><Link to="/contact" className="hover:text-white">{t("nav.contact")}</Link></li>
           </ul>
-          <p className="text-xs mt-4 text-gray-400">Email: info@wellix.com</p>
+          <p className="text-xs mt-4 text-gray-400">Email: info@wellix.ge</p>
         </div>
       </div>
 

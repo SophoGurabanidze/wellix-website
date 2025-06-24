@@ -2,10 +2,23 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import image1 from "../assets/images/About1.png";
 import image2 from "../assets/images/Brothers.jpeg";
+import usePageSEO from "../hooks/usePageSEO";
+
+const seo = {
+  en: {
+    title: "About Us | Wellix",
+    description: "Learn about Wellix’s mission, values, and experience delivering  premium water well services across Georgia.",
+  },
+  ka: {
+    title: "ჩვენ შესახებ | ველიქსი",
+    description: "გაიგეთ მეტი ველიქსის შესახებ — ჩვენი ისტორია, მისია და პრემიუმ მომსახურების გამოცდილება საქართველოში.",
+  },
+};
 
 const CompanyToday = () => {
   const { t } = useTranslation();
 
+  usePageSEO(seo)
   const timelineText = t("company_today.timeline", { returnObjects: true });
 
   return (
@@ -49,6 +62,7 @@ const CompanyToday = () => {
                     <img
                       src={image2}
                       alt="Brothers Founders"
+                      loading="lazy"
                       className="rounded-lg shadow-md object-cover w-full h-auto"
                     />
                   </div>
