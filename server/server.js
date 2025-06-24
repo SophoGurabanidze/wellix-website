@@ -16,7 +16,9 @@ dotenv.config();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://wellix-website.vercel.app" 
+    "https://wellix-website.vercel.app",
+    "https://wellix.ge",
+    "https://www.wellix.ge",
   ],
   credentials: true,
 }));
