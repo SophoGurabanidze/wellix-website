@@ -20,14 +20,13 @@ const Home = () => {
 
   const seo = {
     en: {
-      title: "Wellix | Water Well Drilling in Georgia",
+      title: "Wellix | Premium Quality Boreholes",
       description:
-        "Wellix offers professional water well drilling, rehabilitation, and conservation services across Georgia with German expertise.",
+        "High-standard borehole construction and installation; services for borehole maintenance, rehabilitation, and conservation.",
     },
     ka: {
-      title: "ველიქსი | ჭაბურღილის ბურღვა საქართველოში",
-      description:
-        "ველიქსი გთავაზობთ ჭაბურღილის გაბურღვას, რეაბილიტაციას და კონსერვაციას გერმანულ ტექნოლოგიებზე დაყრდნობით  საქართველოს მთელ ტერიტორიაზე.",
+      title: "ველიქსი | პრემიუმ ხარისხის ჭაბურღილები",
+      description: "ჭაბურღილის მაღალი სტანდარტით მშენებლობა-მოწყობა; ჭაბურღილის მოვლა-პატრონობის, ჭაბურღილის რეაბილიტაციისა და ჭაბურღილის კონსერვაციის სერვისები",
     },
   };
 
