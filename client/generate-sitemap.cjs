@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const baseDomain = "https://wellix-website.vercel.app"; // Change to wellix.ge after domain setup
+const baseDomain = "https://wellix.ge"; // Change to wellix.ge after domain setup
 
 const routes = [
   "", // homepage
@@ -46,6 +46,9 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 ${sitemapEntries.join("\n")}
 </urlset>`;
 
+
+
 fs.writeFileSync(path.join(__dirname, "public", "sitemap.xml"), sitemap.trim());
+
 
 console.log("✅ sitemap.xml generated at: client/public/sitemap.xml");
