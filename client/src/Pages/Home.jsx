@@ -20,12 +20,12 @@ const Home = () => {
 
   const seo = {
     en: {
-      title: "Wellix | Premium Quality Boreholes",
+      title: "Wellix | Construction of an artesian well ",
       description:
         "High-standard borehole construction and installation; services for borehole maintenance, rehabilitation, and conservation.",
     },
     ka: {
-      title: "ველიქსი | პრემიუმ ხარისხის ჭაბურღილები",
+      title: "ველიქსი | არტეზიული ჭაბურღილის მოწყობა",
       description: "ჭაბურღილის მაღალი სტანდარტით მშენებლობა-მოწყობა; ჭაბურღილის მოვლა-პატრონობის, ჭაბურღილის რეაბილიტაციისა და ჭაბურღილის კონსერვაციის სერვისები",
     },
   };
