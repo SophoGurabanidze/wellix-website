@@ -5,16 +5,16 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-[#003d73] text-gray-200 pt-12 pb-8 px-4 mt-auto relative">
-      <div className="container mx-auto grid gap-10 md:grid-cols-4 divide-y md:divide-y-0 divide-gray-600">
+    <footer className="bg-[#003d73] text-gray-200 pt-12 pb-8 px-4 mt-auto relative text-center">
+      <div className="container mx-auto grid gap-10 md:grid-cols-4 divide-y md:divide-y-0 divide-gray-600 text-center md:text-center">
         {/* Logo and Motto */}
-        <div className="text-center md:text-left pt-0 md:pt-0">
+        <div className="pt-0 md:pt-0">
           <h2 className="text-xl font-semibold mb-4 text-white">{t("footer.company")}</h2>
           <p className="text-sm leading-relaxed">{t("footer.motto")}</p>
         </div>
 
         {/* About Us */}
-        <div className="pt-6 md:pt-0 text-center md:text-left">
+        <div className="pt-6 md:pt-0">
           <h3 className="text-base md:text-lg font-semibold text-white mb-3">{t("footer.about")}</h3>
           <ul className="space-y-3 text-sm leading-relaxed">
             <li><Link to="/about/about-us" className="hover:text-white">{t("nav.about")}</Link></li>
@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
 
         {/* Services */}
-        <div className="pt-6 md:pt-0 text-center md:text-left">
+        <div className="pt-6 md:pt-0">
           <h3 className="text-base md:text-lg font-semibold text-white mb-3">{t("footer.services")}</h3>
           <ul className="space-y-3 text-sm leading-relaxed">
             <li><Link to="/building-new-wells" className="hover:text-white">{t("nav.new_wells")}</Link></li>
@@ -35,7 +35,7 @@ const Footer = () => {
         </div>
 
         {/* Contact */}
-        <div className="pt-6 md:pt-0 text-center md:text-left">
+        <div className="pt-6 md:pt-0">
           <h3 className="text-base md:text-lg font-semibold text-white mb-3">{t("footer.contact")}</h3>
           <ul className="space-y-3 text-sm leading-relaxed">
             <li><Link to="/faq" className="hover:text-white">{t("nav.faq")}</Link></li>

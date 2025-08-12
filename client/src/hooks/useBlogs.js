@@ -2,7 +2,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetcher } from "../utils/fetcher";
 
-// Get all blogs
+
 export const useBlogs = () => {
   return useQuery({
     queryKey: ["blogs"],
