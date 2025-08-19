@@ -1,11 +1,12 @@
 # Wellix Website
 
-This is the official website for **Wellix**, a company I co-founded specializing in artesian well construction, rehabilitation, and conservation services across Georgia. I designed and developed this site from scratch to represent our brand, showcase our projects, and make it easy for clients to reach out.
+This is the official website for **Wellix**, a company specializing in artesian well construction, rehabilitation, and conservation services across Georgia. I designed and developed this website from scratch to represent the company’s brand, showcase its projects, and make it easy for clients to reach out.
+
 
 ## 🌐 About Wellix
 
 Wellix is committed to delivering high-standard water well services with a focus on quality, sustainability, and long-term customer care.  
-Visit us at [wellix.ge](https://wellix.ge)
+Learn more at [wellix.ge](https://wellix.ge)
 
 ## 🚀 Project Highlights
 
