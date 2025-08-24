@@ -19,7 +19,7 @@ Learn more at [wellix.ge](https://wellix.ge)
 
 ## 🛠️ Tech Stack
 
-**Frontend:** React, TypeScript, Vite, Tailwind CSS, React Router, React Query, i18next  
+**Frontend:** React, JavaScript, Vite, Tailwind CSS, React Router, React Query, i18next  
 **Backend:** Node.js, Express.js, MongoDB, Mongoose, JWT authentication  
 **Integrations:** Google Maps API, Nodemailer  
 **Hosting:** Vercel (frontend), Render (backend)
