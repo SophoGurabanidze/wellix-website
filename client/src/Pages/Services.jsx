@@ -5,21 +5,28 @@ import usePageSEO from "../hooks/usePageSEO";
 const seo = {
   ka: {
     title: "სერვისები | ჭაბურღილის ბურღვა, რეაბილიტაცია და კონსერვაცია",
-    description: "გაიგეთ მეტი ველიქსის სერვისების შესახებ — წყლის ჭაბურღილის ბურღვა, არტეზიული ჭაბურღილის მოწყობა, არსებული ჭაბურღილების რეაბილიტაცია/აღდგენა დაზიანებული ჭაბურღილის კონსერვაცია/ლიკვიდაცია/გაუქმება და ჭაბურღილის პროექტირება/დათვალიერება/ინსპექტირება.",
+    description:
+      "გაიგეთ მეტი ველიქსის სერვისების შესახებ — წყლის ჭაბურღილის ბურღვა, არტეზიული ჭაბურღილის მოწყობა, არსებული ჭაბურღილების რეაბილიტაცია/აღდგენა დაზიანებული ჭაბურღილის კონსერვაცია/ლიკვიდაცია/გაუქმება და ჭაბურღილის პროექტირება/დათვალიერება/ინსპექტირება.",
   },
   en: {
     title: "Services | Well Drilling, Rehabilitation, and Conservation",
-    description: "Learn more about Wellix's services — water well drilling, rehabilitation/restoration of existing wells, conservation/decommissioning/elimination of damaged wells, and well design/inspection/evaluation.",
+    description:
+      "Learn more about Wellix's services — water well drilling, rehabilitation/restoration of existing wells, conservation/decommissioning/elimination of damaged wells, and well design/inspection/evaluation.",
   },
 };
 
+const routeByIndex = {
+  3: "/building-new-wells",
+  5: "/maintenance",
+  6: "/conservation",
+};
 
 const Services = () => {
   const { t } = useTranslation();
   const radius = 320;
   const verticalOffset = 260;
 
-  const services = t("services.items", { returnObjects: true });
+  const services = t("services.items", { returnObjects: true }) ;
   usePageSEO(seo);
 
   return (
@@ -43,26 +50,29 @@ const Services = () => {
 
       <div className="relative">
         {/* Mobile Layout */}
-        <div className="text-[14px] flex flex-col gap-8 sm:hidden mt-12 px-4">
-          {services.map((text, i) =>
-            i === 3 ? (
-              <Link key={i} to="/building-new-wells" className="bg-gradient-to-r from-primaryBlue to-secondaryBlue hover:from-secondaryBlue hover:to-primaryBlue text-white px-6 py-4 rounded-md shadow-md transition-all duration-300 transform hover:scale-[1.01]">
+        <div className="pl-0 sm:hidden mt-12 px-6 text-[14px] flex flex-col items-center gap-6">
+          {services.map((text, i) => {
+            const to = routeByIndex[i];
+            const classes =
+              "w-full max-w-[680px] text-center bg-gradient-to-r from-primaryBlue to-secondaryBlue text-white px-6 py-4 rounded-md shadow-md break-words leading-relaxed transition-all duration-300 transform hover:scale-[1.01]";
+            return to ? (
+              <Link key={i} to={to} className={classes}>
                 {text}
               </Link>
             ) : (
-              <div key={i} className="bg-gradient-to-r from-primaryBlue to-secondaryBlue text-white px-6 py-4 rounded-md shadow-md">
+              <div key={i} className={classes}>
                 {text}
               </div>
-            )
-          )}
+            );
+          })}
         </div>
 
         {/* Desktop Layout */}
-        <div className="text-[14px] hidden sm:block">
+        <div className="hidden sm:block text-[14px]">
           {[...services].reverse().map((text, i) => {
             const total = services.length;
-            const realIndex = total - 1 - i;
-            const isLink = realIndex === 3;
+            const realIndex = total - 1 - i; // map back to original index
+            const to = routeByIndex[realIndex];
 
             const angleStep = Math.PI / (total + 1);
             const angle = angleStep * (i + 1);
@@ -70,10 +80,17 @@ const Services = () => {
             const y = radius * Math.cos(angle);
 
             return (
-              <div key={i} className="absolute flex items-center gap-4" style={{ top: `${verticalOffset + y}px`, left: `${x + 40}px` }}>
+              <div
+                key={i}
+                className="absolute flex items-center gap-4"
+                style={{ top: `${verticalOffset + y}px`, left: `${x + 40}px` }}
+              >
                 <div className="w-10 h-10 bg-white border-[3px] border-primaryBlue rounded-full" />
-                {isLink ? (
-                  <Link to="/building-new-wells" className="bg-gradient-to-r from-primaryBlue to-secondaryBlue text-white px-6 py-4 rounded-md shadow-md w-[900px] max-w-[90vw] break-words hover:scale-[1.01] transition-transform duration-300">
+                {to ? (
+                  <Link
+                    to={to}
+                    className="bg-gradient-to-r from-primaryBlue to-secondaryBlue text-white px-6 py-4 rounded-md shadow-md w-[900px] max-w-[90vw] break-words hover:scale-[1.01] transition-transform duration-300"
+                  >
                     {text}
                   </Link>
                 ) : (

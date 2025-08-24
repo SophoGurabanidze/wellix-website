@@ -10,7 +10,7 @@ export default function ShortHistory() {
   const secondRow = timeline.slice(5);
 
   return (
-    <div className="px-4 py-16 bg-gradient-to-b from-white to-blue-50">
+    <div className="px-4 md:px-24 py-16 bg-gradient-to-b from-white to-blue-50">
       <h2 className="text-4xl font-bold text-center mb-24 text-primaryBlue">
         {t("short_history.title")}
       </h2>

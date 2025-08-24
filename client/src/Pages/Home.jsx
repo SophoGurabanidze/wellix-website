@@ -42,6 +42,12 @@ const Home = () => {
     return () => clearInterval(blogSlider);
   }, [blogPosts.length]);
 
+  // dots navigation
+  const goTo = (idx) => {
+    if (!blogPosts.length) return;
+    setCurrentBlog((idx + blogPosts.length) % blogPosts.length);
+  };
+
   return (
     <div className="flex flex-col gap-16">
       {/* Hero */}
@@ -63,24 +69,16 @@ const Home = () => {
 
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-3xl">
-            
-            {/* <motion.h1 variants={fadeUp} className="text-white text-4xl md:text-5xl font-bold drop-shadow">
-              {t("home.hero_title", { defaultValue: "დროში გამოცდილი ხარისხი" })}
-            </motion.h1> */}
-            {/* <motion.div variants={fadeUp} className="mt-6">
-              <Link to="projects/completed" className="inline-block bg-cyan-600 text-white px-6 py-2 rounded hover:bg-cyan-700 transition">
-                {t("home.projects_button",{defaultValue:"გამორჩეული პროექტები"})}
-              </Link>
-            </motion.div> */}
+            {/* optional hero content */}
           </motion.div>
         </div>
       </section>
 
-      
+      {/* About */}
       <motion.section
         variants={stagger}
         initial="hidden"
-        animate="show"   
+        animate="show"
         className="container mx-auto px-6 text-center"
       >
         <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4 text-primaryBlue">
@@ -101,11 +99,14 @@ const Home = () => {
 
       {/* Blog slider */}
       <section className="w-full bg-gray-100 px-4 sm:px-8 lg:px-16 py-12">
-        <h2 className="text-3xl font-bold text-center mb-8 text-primaryBlue">{t("home.blog")}</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 text-primaryBlue">
+          {t("home.blog")}
+        </h2>
+
         {isLoading ? (
           <p className="text-center">{t("loadingBlogs")}</p>
         ) : (
-          <div className="relative w-full overflow-hidden">
+          <div className="relative w-full overflow-hidden pb-12">
             <motion.div
               className="flex"
               animate={{ x: `-${currentBlog * 100}%` }}
@@ -146,14 +147,41 @@ const Home = () => {
                     <h3 className="text-2xl font-semibold mt-4 md:mt-0 text-gray-700">
                       {post.title[i18n.language]}
                     </h3>
-                    <p className="text-gray-600 line-clamp-3 mt-2">{post.text[i18n.language]}</p>
-                    <Link to={`/blog/${post._id}`} className="mt-4 text-cyan-600 hover:underline">
+                    <p className="text-gray-600 line-clamp-3 mt-2">
+                      {post.text[i18n.language]}
+                    </p>
+                    <Link
+                      to={`/blog/${post._id}`}
+                      className="mt-4 text-cyan-600 hover:underline"
+                    >
                       {t("home.read_more")}
                     </Link>
                   </motion.div>
                 </motion.div>
               ))}
             </motion.div>
+
+            {/* Dots (inside the relative wrapper) */}
+            {blogPosts.length > 1 && (
+              <div className="absolute inset-x-0 bottom-3 z-10 flex items-center justify-center">
+                <div className="flex items-center gap-2">
+                  {blogPosts.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => goTo(i)}
+                      aria-label={`Go to blog ${i + 1}`}
+                      aria-current={currentBlog === i}
+                      className={`h-2.5 w-2.5 rounded-full ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-cyan-600 ${
+                        currentBlog === i
+                          ? "bg-cyan-600"
+                          : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </section>
