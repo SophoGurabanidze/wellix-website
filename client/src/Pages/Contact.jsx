@@ -125,7 +125,7 @@ const Contact = () => {
         <p className="mb-2"><strong>{t("contact.companyInfo.company")}</strong></p>
         <p className="mb-1">📍 {t("contact.companyInfo.address")}</p>
         <p className="mb-1">✉️ <a href="mailto:info@wellix.ge" className="text-sky-700 hover:underline">{t("contact.companyInfo.email")}</a></p>
-        <p className="mb-1">📞 {t("contact.companyInfo.phone")}</p>
+      
       </div>
     </div>
   );
